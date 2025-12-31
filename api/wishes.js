@@ -1,4 +1,4 @@
-import pool from '../lib/db.js';
+import getPool from './_lib/db.js';
 
 export default async function handler(request, response) {
     if (request.method !== 'GET') {
@@ -6,6 +6,7 @@ export default async function handler(request, response) {
     }
 
     try {
+        const pool = getPool();
         const query = `
         SELECT name, wishes 
         FROM rsvp 

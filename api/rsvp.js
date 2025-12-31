@@ -1,7 +1,14 @@
-import pool from '../lib/db.js';
+import getPool from './_lib/db.js';
 import { createObjectCsvStringifier } from 'csv-writer';
 
 export default async function handler(request, response) {
+    let pool;
+    try {
+        pool = getPool();
+    } catch (e) {
+        return response.status(500).json({ error: e.message });
+    }
+
     if (request.method === 'POST') {
         // Submit RSVP
         const { name, guests, attendance, wishes } = request.body;
