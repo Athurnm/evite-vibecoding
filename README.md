@@ -65,19 +65,32 @@ npm run dev
 # Frontend runs at http://localhost:5173
 ```
 
-### Deployment via Render.com
+### Deployment via Vercel (Recommended)
 
-1. Push this repository to GitHub/GitLab.
-2. Log in to [Render.com](https://render.com).
-3. Click **New +** -> **Web Service**.
-4. Connect your repository.
-5. **Settings:**
-    - **Runtime:** Node
-    - **Build Command:** `npm install && npm run build`
-    - **Start Command:** `node server.js`
-6. **Important:** For the database to persist on Render, you technically need a **Disk** (Paid). On the Free Plan, the `rsvp.db` file (SQLite) will be reset every time the server restarts/redeploys.
-    - *To create a standard Web Service:* Just follow steps 3-5.
-    - *To use the Blueprint:* Go to **Blueprints** -> **New Blueprint Instance** and select this repo (uses `render.yaml`).
+1. Push this repository to GitHub.
+2. Log in to [Vercel](https://vercel.com).
+3. **Add New Project** -> Import this repository.
+4. **Database:**
+    - In the Vercel Project Dashboard, click **Storage**.
+    - Click **Connect Store** -> **Postgres** -> **Create New**.
+    - Follow the prompts. Vercel will automatically add the necessary environment variables (`POSTGRES_URL`, etc.).
+5. **Environment Variables:** Ensure the database links are correct (handled auto by Vercel usually).
+6. **Deploy:** Click Deploy.
+7. **Initialize Database:**
+    - After deployment, visit `https://your-project.vercel.app/api/seed` in your browser once. This creates the `rsvp` table.
+
+### 🏃‍♂️ Running Locally (Vercel)
+
+For the best local experience with Serverless Functions:
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Link project: `vercel link`
+3. Pull env vars: `vercel env pull .env.local`
+4. Run:
+
+    ```bash
+    vercel dev
+    ```
 
 ## 📖 API Documentation
 
