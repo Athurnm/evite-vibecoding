@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="The formal wedding invitation of Athur & Dara. Join us on March 28th, 2026 at Steikhaus, Bandung.">
+    <title>The Wedding of Athur & Dara</title>
+    <link rel="icon" type="image/png" href="/assets/monogram.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Cover / Envelope -->
+        <div id="cover" class="cover-screen">
+            <div class="monogram-container">
+                <img src="/assets/monogram.png" alt="Athur & Dara Monogram" class="monogram-img">
+            </div>
+            <div class="invitation-action">
+                <p id="guest-greeting">Kepada Yth <span id="guest-name">Bapak/Ibu/Saudara/i</span></p>
+                <button id="open-btn" class="btn-open">Open Invitation</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main id="main-content" class="hidden">
+            <!-- Hero / Header -->
+            <header class="hero section fade-in">
+                <img src="/assets/monogram.png" alt="QD Monogram" class="header-monogram">
+                <h2>The Wedding of</h2>
+                <h1 class="couple-names">Athur <span class="script-font">&</span> Dara</h1>
+                <p class="date">March 28th, 2026</p>
+            </header>
+
+            <!-- The Couple -->
+            <section class="couple section fade-in">
+                <!-- Illustration Placeholder -->
+                <div class="illustration-container">
+                    <img src="/assets/couple-illustration.png" alt="Athur & Dara Illustration" class="couple-img">
+                </div>
+                <blockquote class="quote">
+                    "Of all the plans I’ve made, meeting you was the only uncalculated variable that became my greatest
+                    constant."
+                </blockquote>
+            </section>
+
+            <!-- Our Story -->
+            <section class="story section fade-in">
+                <div class="story-layout">
+                    <div class="story-decoration">
+                        <img src="/assets/floral-decoration.png" alt="Floral Decoration"
+                            class="floral-img floating-animation">
+                    </div>
+                    <div class="story-content-wrapper">
+                        <h2 class="section-title">Our Journey</h2>
+                        <div class="timeline">
+                            <!-- Rendered from JS/Markdown content -->
+                            <div id="story-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="details section fade-in">
+                <h2 class="section-title">The Event</h2>
+                <div class="detail-block">
+                    <h3>Date</h3>
+                    <p>Saturday, March 28th, 2026</p>
+                </div>
+                <div class="detail-block">
+                    <h3>Venue</h3>
+                    <p>Steikhaus, Bandung</p>
+                    <p>(Indoor & Semi-Outdoor)</p>
+                </div>
+
+                <!-- Dynamic Time Section -->
+                <div class="detail-block" id="time-section">
+                    <h3>Time</h3>
+                    <!-- Content Injected by JS -->
+                    <div id="time-content">
+                        <p>08:00 - 14:00 WIB</p>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button id="add-to-calendar" class="btn-secondary">Add to Google Calendar</button>
+                    <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-secondary">Get
+                        Directions</a>
+                </div>
+            </section>
+
+            <!-- RSVP -->
+            <section class="rsvp section fade-in">
+                <h2 class="section-title">RSVP</h2>
+                <form id="rsvp-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="5" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance">Will you attend?</label>
+                        <select id="attendance" name="attendance">
+                            <option value="yes">Yes, I will attend</option>
+                            <option value="no">Sorry, I can't make it</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="wishes">Wishes</label>
+                        <textarea id="wishes" name="wishes" rows="4"
+                            placeholder="Write your warm wishes here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Confirm Presence</button>
+                </form>
+
+                <!-- Wishes Carousel -->
+                <div id="wishes-section" class="wishes-carousel hidden-initially">
+                    <h3>Warm Wishes</h3>
+                    <div class="carousel-container">
+                        <button id="prev-wish" class="nav-btn">&lt;</button>
+                        <div id="wish-display" class="wish-card">
+                            <p class="wish-text">Loading wishes...</p>
+                            <span class="wish-author"></span>
+                        </div>
+                        <button id="next-wish" class="nav-btn">&gt;</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Closing -->
+            <footer class="closing section fade-in">
+                <h2 class="monogram-small">A & D</h2>
+                <p>Thank You</p>
+            </footer>
+        </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

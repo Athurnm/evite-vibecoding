@@ -1,0 +1,21 @@
+{
+    "name": "athur-dara-wedding-evite",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^6.0.0"
+    },
+    "dependencies": {
+        "body-parser": "^2.2.1",
+        "cors": "^2.8.5",
+        "csv-writer": "^1.6.0",
+        "express": "^5.2.1",
+        "sqlite3": "^5.1.7"
+    }
+}
