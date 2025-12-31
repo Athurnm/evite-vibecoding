@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: athur-dara-evite
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
+
+# Note: The free plan on Render does not typically support persistent disks. 
+# This configuration requests a disk to try to persist the SQLite DB.
+# If on a pure free plan without disk support, the DB will reset on restart.

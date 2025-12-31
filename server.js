@@ -18,7 +18,10 @@ app.use(bodyParser.json());
 app.use(express.static(join(__dirname, 'dist'))); // Serve built assets in production
 
 // Database Setup
-const db = new sqlite3.Database('./rsvp.db', (err) => {
+// On Render with a disk, mount path is usually /data
+const dbPath = process.env.RENDER ? '/data/rsvp.db' : './rsvp.db';
+
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Error opening database:', err.message);
     } else {

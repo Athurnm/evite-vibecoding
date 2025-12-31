@@ -65,7 +65,19 @@ npm run dev
 # Frontend runs at http://localhost:5173
 ```
 
-> **Note:** The frontend proxies `/api` requests to port 3000. Both must be running for RSVPs to work.
+### Deployment via Render.com
+
+1. Push this repository to GitHub/GitLab.
+2. Log in to [Render.com](https://render.com).
+3. Click **New +** -> **Web Service**.
+4. Connect your repository.
+5. **Settings:**
+    - **Runtime:** Node
+    - **Build Command:** `npm install && npm run build`
+    - **Start Command:** `node server.js`
+6. **Important:** For the database to persist on Render, you technically need a **Disk** (Paid). On the Free Plan, the `rsvp.db` file (SQLite) will be reset every time the server restarts/redeploys.
+    - *To create a standard Web Service:* Just follow steps 3-5.
+    - *To use the Blueprint:* Go to **Blueprints** -> **New Blueprint Instance** and select this repo (uses `render.yaml`).
 
 ## 📖 API Documentation
 
