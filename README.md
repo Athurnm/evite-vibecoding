@@ -37,7 +37,7 @@ A premium, "Ethereal Earth" themed wedding invitation web application. Built as 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/athurnm/athur-dara-evite.git
+    git clone https://github.com/Athurnm/evite-vibecoding.git
     cd athur-dara-evite
     ```
 
