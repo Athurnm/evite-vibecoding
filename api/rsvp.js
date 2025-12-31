@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import pool from '../lib/db.js';
 import { createObjectCsvStringifier } from 'csv-writer';
 
 export default async function handler(request, response) {
@@ -11,10 +11,11 @@ export default async function handler(request, response) {
         }
 
         try {
-            await sql`
+            const query = `
         INSERT INTO rsvp (name, guests, attendance, wishes)
-        VALUES (${name}, ${guests}, ${attendance}, ${wishes});
+        VALUES ($1, $2, $3, $4)
       `;
+            await pool.query(query, [name, guests, attendance, wishes]);
             return response.status(200).json({ message: 'RSVP submitted successfully' });
         } catch (error) {
             return response.status(500).json({ error: error.message });
@@ -24,7 +25,8 @@ export default async function handler(request, response) {
     if (request.method === 'GET' && request.url.includes('download')) {
         // Export CSV
         try {
-            const { rows } = await sql`SELECT * FROM rsvp ORDER BY timestamp DESC`;
+            const result = await pool.query('SELECT * FROM rsvp ORDER BY timestamp DESC');
+            const rows = result.rows;
 
             const csvStringifier = createObjectCsvStringifier({
                 header: [
@@ -48,6 +50,6 @@ export default async function handler(request, response) {
         }
     }
 
-    // Handle default GET (maybe just list or 404? Let's keep it strict)
+    // Handle default GET
     return response.status(405).json({ error: 'Method not allowed' });
 }
