@@ -190,28 +190,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                if (response.ok) {
-                    // Success: Replace form with Thank You message
-                    rsvpForm.innerHTML = `
-                        <div class="thank-you-message text-center fade-in visible">
-                            <h3 class="rsvp-success-header">THANK YOU FOR YOUR ATTENDANCE</h3>
-                            <p class="rsvp-success-msg">
-                                Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
-                            </p>
-                            <h2 class="rsvp-success-names">Athur & Dara</h2>
-                            <p class="rsvp-hashtag">#AthurHidupDenganDara</p>
-                        </div>
-                    `;
-                    loadWishes(); // Refresh wishes
-                } else {
-                    throw new Error('Failed to submit');
-                }
-            } catch (error) {
-                alert('There was an error submitting your RSVP. Please try again.');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                // Success: Replace form with Thank You message
+                rsvpForm.innerHTML = `
+                    <div class="thank-you-message text-center fade-in visible">
+                        <h3 class="rsvp-success-header">THANK YOU FOR YOUR ATTENDANCE</h3>
+                        <p class="rsvp-success-msg">
+                            Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
+                        </p>
+                        <h2 class="rsvp-success-names">Athur & Dara</h2>
+                        <p class="rsvp-hashtag">#AthurHidupDenganDara</p>
+                    </div>
+                `;
+                loadWishes(); // Refresh wishes
+            } else {
+                throw new Error('Failed to submit');
             }
-        });
+        } catch (error) {
+            alert('There was an error submitting your RSVP. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
 
     // 8. Backend Integration: Wishes Carousel
     let wishes = [];
