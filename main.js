@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3. Open Invitation Logic
-    const openBtn = document.getElementById('open-btn');
+    const openBtn = document.getElementById('open-invitation');
     const cover = document.getElementById('cover');
     const mainContent = document.getElementById('main-content');
     const bgMusic = new Audio(); // Placeholder
