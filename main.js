@@ -102,8 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Add to Calendar Logic
     const calendarBtn = document.getElementById('add-to-calendar');
     calendarBtn.addEventListener('click', () => {
-        const timeStart = eventType === 'akad' ? '010000Z' : '040000Z'; // 08:00 WIB (01 UTC) or 11:00 WIB (04 UTC)
-        const timeEnd = '070000Z'; // 14:00 WIB
+        // 11:00 WIB = 04:00 UTC
+        // 13:00 WIB = 06:00 UTC
+        const timeStart = '040000Z';
+        const timeEnd = '060000Z';
         const eventDate = `20260328T${timeStart}/20260328T${timeEnd}`;
 
         const title = encodeURIComponent("The Wedding of Athur & Dara");
