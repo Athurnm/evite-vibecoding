@@ -736,6 +736,7 @@ a.btn-secondary {
 .col-half {
     flex: 1;
 }
+
 /* Credit Footer */
 .credit {
     margin-top: var(--spacing-lg);
@@ -767,7 +768,8 @@ a.btn-secondary {
 .top-right {
     top: 0;
     right: 0;
-    transform: rotate(90deg); /* Adjust based on original image orientation, assuming L shape */
+    transform: rotate(90deg);
+    /* Adjust based on original image orientation, assuming L shape */
 }
 
 .bottom-left {
@@ -777,23 +779,26 @@ a.btn-secondary {
 }
 
 .bold-names {
-    font-size: 3.5rem !important; /* Force bigger */
+    font-size: 2.5rem !important;
+    /* Reduced from 3.5rem */
     font-weight: 600;
 }
 
 .guest-bold {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    /* Reduced from 1.2rem */
     color: var(--color-text-dark);
 }
 
 .invitation-text {
     font-family: var(--font-body);
     font-style: italic;
-    font-size: 0.95rem;
-    margin: var(--spacing-md) 0;
+    font-size: 0.8rem;
+    /* Reduced from 0.95rem */
+    margin: var(--spacing-sm) 0;
     color: #666;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* Pulse Animation for Button */
@@ -802,9 +807,20 @@ a.btn-secondary {
 }
 
 @keyframes pulse-soft {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 159, 145, 0.4); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(168, 159, 145, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 159, 145, 0); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(168, 159, 145, 0.4);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(168, 159, 145, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(168, 159, 145, 0);
+    }
 }
 
 /* Quote Section */
@@ -870,4 +886,19 @@ a.btn-secondary {
     color: var(--color-warm-taupe);
     letter-spacing: 1px;
 }
+/* Specific Cover Resizing */
+.cover-content .subtitle {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+}
 
+.cover-content .date {
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+    letter-spacing: 2px;
+}
+
+.cover-content .guest-greeting {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+}
