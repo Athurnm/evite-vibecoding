@@ -743,3 +743,14 @@ a.btn-secondary {
     color: var(--color-warm-taupe);
     opacity: 0.8;
 }
+
+.credit-link {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.credit-link:hover {
+    color: var(--color-muted-blush);
+}
