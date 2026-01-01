@@ -754,3 +754,120 @@ a.btn-secondary {
 .credit-link:hover {
     color: var(--color-muted-blush);
 }
+
+/* Cover Decorations */
+.corner-decoration {
+    position: absolute;
+    width: 250px;
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(90deg); /* Adjust based on original image orientation, assuming L shape */
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}
+
+.bold-names {
+    font-size: 3.5rem !important; /* Force bigger */
+    font-weight: 600;
+}
+
+.guest-bold {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+}
+
+.invitation-text {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: var(--spacing-md) 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Pulse Animation for Button */
+.pulse-btn {
+    animation: pulse-soft 2s infinite;
+}
+
+@keyframes pulse-soft {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 159, 145, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(168, 159, 145, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 159, 145, 0); }
+}
+
+/* Quote Section */
+.quote-section {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.couple-img-small {
+    width: 200px;
+    height: auto;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.8;
+}
+
+.quran-quote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quran-quote strong {
+    display: block;
+    margin-top: var(--spacing-md);
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* RSVP Success Styling */
+.rsvp-success-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-warm-taupe);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.rsvp-success-msg {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.rsvp-success-names {
+    font-family: var(--font-accent);
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.rsvp-hashtag {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-warm-taupe);
+    letter-spacing: 1px;
+}
+
