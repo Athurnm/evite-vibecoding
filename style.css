@@ -851,41 +851,10 @@ a.btn-secondary {
     margin-top: var(--spacing-md);
     font-family: var(--font-body);
     font-style: normal;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-/* RSVP Success Styling */
-.rsvp-success-header {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: var(--color-warm-taupe);
-    margin-bottom: var(--spacing-md);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.rsvp-success-msg {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.6;
-}
-
-.rsvp-success-names {
-    font-family: var(--font-accent);
-    font-size: 2.5rem;
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-sm);
-}
-
-.rsvp-hashtag {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 0.9rem;
     color: var(--color-warm-taupe);
     letter-spacing: 1px;
 }
+
 /* Specific Cover Resizing */
 .cover-content .subtitle {
     font-size: 1rem;
