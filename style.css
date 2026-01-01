@@ -692,11 +692,7 @@ a.btn-secondary {
     letter-spacing: 1px;
 }
 
-font-family: var(--font-body);
-font-style: italic;
-color: #666;
-margin-bottom: 5px;
-}
+
 
 /* Couple Section */
 .couple .section-title {
