@@ -649,6 +649,11 @@ a.btn-secondary {
     margin: 0 auto;
 }
 
+/* Ensure hidden overrides flex */
+.thank-you-message.hidden {
+    display: none !important;
+}
+
 .rsvp-success-header {
     font-family: var(--font-heading);
     font-size: 2.5rem;
