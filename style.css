@@ -515,4 +515,102 @@ a.btn-secondary {
     .section {
         padding: var(--spacing-lg) var(--spacing-md);
     }
+}/* Event Details Refactor */
+.save-the-date-header {
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.event-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.event-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.event-type {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: var(--color-warm-taupe);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.event-date {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.event-time {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.venue-name {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--color-warm-taupe);
+}
+
+.venue-address {
+  font-size: 0.9rem;
+  color: #666;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-warm-taupe);
+  padding: 10px 20px;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-warm-taupe);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-warm-taupe);
+  color: white;
+}
+
+.btn-map {
+  margin-top: var(--spacing-md);
+  display: inline-block;
+  border: 1px solid var(--color-muted-blush);
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--color-text-dark);
+  transition: all 0.3s;
+}
+
+.btn-map:hover {
+  background-color: var(--color-muted-blush);
+  color: white;
+  border-color: var(--color-muted-blush);
 }

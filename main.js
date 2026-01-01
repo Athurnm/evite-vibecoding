@@ -18,19 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Time Variant Logic
     const eventType = params.get('type') || 'resepsi'; // Default to resepsi
-    const timeContent = document.getElementById('time-content');
+    const akadTimeElement = document.getElementById('akad-time');
 
-    if (eventType === 'akad') {
-        timeContent.innerHTML = `
-            <p><strong>Akad:</strong> 08:00 - 10:00 WIB</p>
-            <p><strong>Resepsi:</strong> 11:00 - 13:00 WIB</p>
-        `;
-    } else {
-        // Resepsi (Default)
-        timeContent.innerHTML = `
-            <p><strong>Akad:</strong> Done in the morning</p>
-            <p><strong>Resepsi:</strong> 11:00 - 13:00 WIB</p>
-        `;
+    if (akadTimeElement) {
+        if (eventType === 'akad') {
+            akadTimeElement.textContent = "08:00 - 10:00 WIB";
+        } else {
+            // Resepsi (Default)
+            akadTimeElement.textContent = "Done in the morning";
+            // Optional: You could hide the entire Akad block if desired
+            // document.querySelector('.event-block:first-child').style.display = 'none';
+        }
     }
 
     // 3. Open Invitation Logic
