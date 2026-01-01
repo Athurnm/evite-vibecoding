@@ -190,17 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                // Success: Replace form with Thank You message
-                rsvpForm.innerHTML = `
-                    <div class="thank-you-message text-center fade-in visible">
-                        <h3 class="rsvp-success-header">THANK YOU FOR YOUR ATTENDANCE</h3>
-                        <p class="rsvp-success-msg">
-                            Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
-                        </p>
-                        <h2 class="rsvp-success-names">Athur & Dara</h2>
-                        <p class="rsvp-hashtag">#AthurHidupDenganDara</p>
-                    </div>
-                `;
+                // Success: Toggle visibility
+                rsvpForm.classList.add('hidden');
+                const successMsg = document.getElementById('rsvp-success');
+                successMsg.classList.remove('hidden');
+                successMsg.classList.add('fade-in', 'visible');
+
                 loadWishes(); // Refresh wishes
             } else {
                 throw new Error('Failed to submit');
