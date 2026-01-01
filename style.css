@@ -614,3 +614,88 @@ a.btn-secondary {
   color: white;
   border-color: var(--color-muted-blush);
 }
+/* Couple Section */
+.couple-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    text-align: center;
+}
+
+.couple-role {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-warm-taupe);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.couple-name {
+    font-family: var(--font-accent);
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.couple-subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.couple-parents {
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+
+.couple-divider {
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    color: var(--color-gold);
+}
+
+/* Vine Scroll Animation */
+.details {
+    position: relative;
+    overflow: hidden; /* To clip the vine if needed */
+}
+
+.vine-decoration {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 90%;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0.15; /* Base opacity */
+}
+
+.vine-img {
+    height: 0%; /* Starts empty */
+    width: auto;
+    object-fit: cover;
+    object-position: top;
+    transition: height 0.1s linear; /* Smooth fill */
+    filter: sepia(1) hue-rotate(320deg); /* Tint slightly to match theme */
+}
+
+@media (min-width: 768px) {
+    .couple-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .couple-divider {
+        padding-top: 60px;
+    }
+}

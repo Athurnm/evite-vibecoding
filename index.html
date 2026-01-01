@@ -21,19 +21,46 @@
 
 <body>
     <div id="app">
-        <!-- Cover / Envelope -->
-        <div id="cover" class="cover-screen">
-            <div class="monogram-container">
-                <img src="/assets/monogram.png" alt="Athur & Dara Monogram" class="monogram-img">
+        <!-- Cover Section -->
+        <header id="cover" class="cover">
+            <div class="cover-content">
+                <p class="subtitle fade-in">The Wedding of</p>
+                <h1 class="title fade-in">Athur & Dara</h1>
+                <p class="date fade-in">March 28th, 2026</p>
+                <p class="guest-greeting fade-in">Dear <span id="guest-name">Bapak/Ibu/Saudara/i</span>,</p>
+                <button id="open-invitation" class="btn-primary fade-in">Open Invitation</button>
             </div>
-            <div class="invitation-action">
-                <p id="guest-greeting">Kepada Yth <span id="guest-name">Bapak/Ibu/Saudara/i</span></p>
-                <button id="open-btn" class="btn-open">Open Invitation</button>
-            </div>
-        </div>
+        </header>
 
-        <!-- Main Content -->
+        <!-- Main Content (Hidden Initially) -->
         <main id="main-content" class="hidden">
+
+            <!-- NEW: Couple Section -->
+            <section id="couple" class="couple section fade-in">
+                <h2 class="section-title">The Bride & The Groom</h2>
+
+                <div class="couple-container">
+                    <!-- The Bride -->
+                    <div class="couple-block">
+                        <h3 class="couple-role">The Bride</h3>
+                        <h2 class="couple-name">Dara Afiifah Meizwar, S.T.</h2>
+                        <p class="couple-subtitle">Putri Pertama Dari</p>
+                        <p class="couple-parents">Bapak Geki Fedia, S.T.<br>& Ibu Ossi, S.T.</p>
+                    </div>
+
+                    <div class="couple-divider"> & </div>
+
+                    <!-- The Groom -->
+                    <div class="couple-block">
+                        <h3 class="couple-role">The Groom</h3>
+                        <h2 class="couple-name">Athur Naufan Muharam, S.T.</h2>
+                        <p class="couple-subtitle">Putra Kedua Dari</p>
+                        <p class="couple-parents">Bapak Ir. Amin Sardjono, S.T. , M.M.<br>& Ibu Dian Nurdiani T., S.S.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Hero / Header -->
             <header class="hero section fade-in">
                 <img src="/assets/monogram.png" alt="QD Monogram" class="header-monogram">
@@ -72,38 +99,44 @@
             </section>
 
             <!-- Event Details -->
-        <section class="details section fade-in">
-          <div class="save-the-date-header">
-             <h2 class="section-title">Save The Date</h2>
-             <button id="add-to-calendar" class="btn-outline">Add to Google Calendar</button>
-          </div>
+            <section class="details section fade-in" id="event-details">
+                <div class="vine-decoration">
+                    <img src="/assets/vine.png" alt="Decoration" class="vine-img" id="scroll-vine">
+                </div>
 
-          <div class="event-schedule">
-              <!-- AKAD SECTION -->
-              <div class="event-block">
-                  <h3 class="event-type">AKAD</h3>
-                  <p class="event-date">SATURDAY, MARCH 28TH, 2026</p>
-                  <p class="event-time" id="akad-time">08:00 - 10:00 WIB</p>
-                  <div class="event-venue">
-                      <p class="venue-name">STEIKHAUS, BANDUNG</p>
-                      <p class="venue-address">(Indoor & Semi-Outdoor)</p>
-                  </div>
-                  <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google Maps</a>
-              </div>
+                <div class="save-the-date-header">
+                    <h2 class="section-title">Save The Date</h2>
+                    <button id="add-to-calendar" class="btn-outline">Add to Google Calendar</button>
+                </div>
 
-              <!-- RESEPSI SECTION -->
-              <div class="event-block">
-                  <h3 class="event-type">RESEPSI</h3>
-                  <p class="event-date">SATURDAY, MARCH 28TH, 2026</p>
-                  <p class="event-time">11:00 - 13:00 WIB</p>
-                  <div class="event-venue">
-                      <p class="venue-name">STEIKHAUS, BANDUNG</p>
-                      <p class="venue-address">(Indoor & Semi-Outdoor)</p>
-                  </div>
-                  <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google Maps</a>
-              </div>
-          </div>
-        </section>
+                <div class="event-schedule">
+                    <!-- AKAD SECTION -->
+                    <div class="event-block">
+                        <h3 class="event-type">AKAD</h3>
+                        <p class="event-date">SATURDAY, MARCH 28TH, 2026</p>
+                        <p class="event-time" id="akad-time">08:00 - 10:00 WIB</p>
+                        <div class="event-venue">
+                            <p class="venue-name">STEIKHAUS, BANDUNG</p>
+                            <p class="venue-address">(Indoor & Semi-Outdoor)</p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
+                            Maps</a>
+                    </div>
+
+                    <!-- RESEPSI SECTION -->
+                    <div class="event-block">
+                        <h3 class="event-type">RESEPSI</h3>
+                        <p class="event-date">SATURDAY, MARCH 28TH, 2026</p>
+                        <p class="event-time">11:00 - 13:00 WIB</p>
+                        <div class="event-venue">
+                            <p class="venue-name">STEIKHAUS, BANDUNG</p>
+                            <p class="venue-address">(Indoor & Semi-Outdoor)</p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
+                            Maps</a>
+                    </div>
+                </div>
+            </section>
 
             <!-- RSVP -->
             <section class="rsvp section fade-in">

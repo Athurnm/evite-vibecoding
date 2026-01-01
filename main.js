@@ -41,24 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cover.classList.add('hide');
         mainContent.classList.remove('hidden');
         setTimeout(() => {
-            setupIntersectionObserver();
+            // setupIntersectionObserver(); // Removed: Observer is now initialized directly
             loadWishes(); // Load wishes when opened
         }, 100);
     });
-
-    // 4. Intersection Observer
-    function setupIntersectionObserver() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(el => observer.observe(el));
-    }
 
     // 5. Story Content
     const storyContainer = document.getElementById('story-container');
