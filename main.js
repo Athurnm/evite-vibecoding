@@ -130,13 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let start = allowZero ? 0 : 1;
         let end = maxOption;
 
-        // If URL param exists, restrict options
+        // If URL param exists, restrict options (act as MAX limit)
         if (paramValue !== null) {
             const val = parseInt(paramValue);
             if (!isNaN(val)) {
-                // If param is set (e.g., adult=1), only allow that specific value
-                // Or maybe you want 'up to X'? User said "only show 1 as options" -> implies strict single option
-                start = val;
+                // User requirement: param acts as MAX option
+                // start remains as default (1 for adult, 0 for child), end becomes val
                 end = val;
             }
         }
