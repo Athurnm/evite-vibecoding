@@ -149,9 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Defaults: Adults 1-4, Children 0-4
+    // Defaults: Adults 1-8, Children 0-4
     // If param exists, it overrides strict range
-    populateDropdown(adultSelect, 4, 'adult', false);
+    populateDropdown(adultSelect, 8, 'adult', false);
     populateDropdown(childSelect, 4, 'children', true);
 
 
