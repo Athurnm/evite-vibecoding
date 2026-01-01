@@ -217,4 +217,34 @@ document.addEventListener('DOMContentLoaded', () => {
         renderWish(nextIndex);
         startWishCarousel(); // Restart timer
     });
+    // 9. Intersection Observer for Fade-in
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 10. Vine Scroll Animation
+    const eventSection = document.getElementById('event-details');
+    const vineImg = document.getElementById('scroll-vine');
+
+    if (eventSection && vineImg) {
+        window.addEventListener('scroll', () => {
+            const rect = eventSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const sectionHeight = rect.height;
+            const scrollPosition = windowHeight - rect.top;
+
+            // Calculate progress: 0% when entering, 100% when fully traversed
+            // Adjusted formula for better visual timing
+            let percentage = (scrollPosition / (sectionHeight + (windowHeight * 0.2))) * 100;
+            percentage = Math.max(0, Math.min(100, percentage));
+
+            vineImg.style.height = `${percentage}%`;
+        });
+    }
 });
