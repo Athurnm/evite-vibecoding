@@ -649,6 +649,55 @@ a.btn-secondary {
     margin: 0 auto;
 }
 
+.rsvp-success-header {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    /* Increased size (was 1.8rem) */
+    color: var(--color-warm-taupe);
+    margin-top: var(--spacing-xl);
+    /* Added whitespace above */
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.rsvp-success-msg {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.8rem;
+    /* Matches invitation-text */
+    margin: var(--spacing-xl) auto;
+    /* Increased vertical space */
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.rsvp-success-names {
+    font-size: 3rem !important;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.rsvp-hashtag {
+    font-family: var(--font-body);
+    font-weight: 700;
+    /* Bold highlight */
+    font-size: 0.8rem;
+    /* Small font size */
+    color: var(--color-warm-taupe);
+    letter-spacing: 1px;
+}
+
+font-family: var(--font-body);
+font-style: italic;
+color: #666;
+margin-bottom: 5px;
+}
+
 /* Couple Section */
 .couple .section-title {
     margin-bottom: 3rem;
