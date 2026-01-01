@@ -146,9 +146,19 @@
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="guests">Number of Guests</label>
-                        <input type="number" id="guests" name="guests" min="1" max="5" value="1">
+                    <div class="form-group row">
+                        <div class="col-half">
+                            <label for="adults">Adults</label>
+                            <select id="adults" name="adults" required>
+                                <!-- Options injected via JS -->
+                            </select>
+                        </div>
+                        <div class="col-half">
+                            <label for="children">Children</label>
+                            <select id="children" name="children" required>
+                                <!-- Options injected via JS -->
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="attendance">Will you attend?</label>

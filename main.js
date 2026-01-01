@@ -119,10 +119,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Backend Integration: RSVP Submit
     const rsvpForm = document.getElementById('rsvp-form');
 
+    // Populate Guests Dropdowns with URL Logic
+    const adultSelect = document.getElementById('adults');
+    const childSelect = document.getElementById('children');
+
+    function populateDropdown(selectElement, maxOption, paramName, allowZero = false) {
+        const paramValue = params.get(paramName);
+        selectElement.innerHTML = ''; // Clear existing
+
+        let start = allowZero ? 0 : 1;
+        let end = maxOption;
+
+        // If URL param exists, restrict options
+        if (paramValue !== null) {
+            const val = parseInt(paramValue);
+            if (!isNaN(val)) {
+                // If param is set (e.g., adult=1), only allow that specific value
+                // Or maybe you want 'up to X'? User said "only show 1 as options" -> implies strict single option
+                start = val;
+                end = val;
+            }
+        }
+
+        for (let i = start; i <= end; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            selectElement.appendChild(option);
+        }
+    }
+
+    // Defaults: Adults 1-4, Children 0-4
+    // If param exists, it overrides strict range
+    populateDropdown(adultSelect, 4, 'adult', false);
+    populateDropdown(childSelect, 4, 'children', true);
+
+
     rsvpForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(rsvpForm);
-        const data = Object.fromEntries(formData.entries());
+        // Combine adults + children into total guests string or number for DB
+        // The DB has 'guests' column. We can save "X Adults, Y Children" or just total.
+        // Let's save total number for simplicity in existing column, 
+        // OR extend schema? User didn't ask for schema change. 
+        // Let's store total int, but maybe append details to 'wishes' or just assume 'guests' = total.
+        // Actually, let's keep 'guests' as total count for now to avoid breaking DB schema.
+
+        const adults = parseInt(formData.get('adults'));
+        const children = parseInt(formData.get('children'));
+        const totalGuests = adults + children;
+
+        const data = {
+            name: formData.get('name'),
+            guests: totalGuests, // Saving total count
+            attendance: formData.get('attendance'),
+            wishes: formData.get('wishes')
+        };
+
         const submitBtn = rsvpForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
 

@@ -735,4 +735,12 @@ a.btn-secondary {
     .couple-divider {
         padding-top: 60px;
     }
+}/* Form Row Split */
+.form-group.row {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.col-half {
+    flex: 1;
 }
