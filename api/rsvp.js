@@ -11,7 +11,7 @@ export default async function handler(request, response) {
 
     if (request.method === 'POST') {
         // Submit RSVP
-        const { name, guests, attendance, wishes } = request.body;
+        const { name, guests, adults, children, attendance, wishes } = request.body;
 
         if (!name || !attendance) {
             return response.status(400).json({ error: 'Name and attendance are required' });
@@ -19,10 +19,10 @@ export default async function handler(request, response) {
 
         try {
             const query = `
-        INSERT INTO rsvp (name, guests, attendance, wishes)
-        VALUES ($1, $2, $3, $4)
+        INSERT INTO rsvp (name, guests, adults, children, attendance, wishes)
+        VALUES ($1, $2, $3, $4, $5, $6)
       `;
-            await pool.query(query, [name, guests, attendance, wishes]);
+            await pool.query(query, [name, guests, adults, children, attendance, wishes]);
             return response.status(200).json({ message: 'RSVP submitted successfully' });
         } catch (error) {
             return response.status(500).json({ error: error.message });
@@ -39,7 +39,9 @@ export default async function handler(request, response) {
                 header: [
                     { id: 'id', title: 'ID' },
                     { id: 'name', title: 'Name' },
-                    { id: 'guests', title: 'Guests' },
+                    { id: 'guests', title: 'Total Guests' },
+                    { id: 'adults', title: 'Adults' },
+                    { id: 'children', title: 'Children' },
                     { id: 'attendance', title: 'Attendance' },
                     { id: 'wishes', title: 'Wishes' },
                     { id: 'timestamp', title: 'Timestamp' }

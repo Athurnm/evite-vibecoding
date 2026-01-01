@@ -171,7 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = {
             name: formData.get('name'),
-            guests: totalGuests, // Saving total count
+            guests: totalGuests, // Saving total count as well
+            adults: adults,
+            children: children,
             attendance: formData.get('attendance'),
             wishes: formData.get('wishes')
         };

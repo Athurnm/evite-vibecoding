@@ -8,6 +8,8 @@ export default async function handler(request, response) {
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         guests INTEGER,
+        adults INTEGER DEFAULT 0,
+        children INTEGER DEFAULT 0,
         attendance VARCHAR(50),
         wishes TEXT,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
