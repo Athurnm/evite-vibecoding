@@ -674,10 +674,15 @@ a.btn-secondary {
 }
 
 .rsvp-success-names {
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
+    /* Matches .bold-names */
     font-weight: 600;
+    /* Matches .bold-names */
     font-family: var(--font-heading);
-    color: var(--color-text-dark);
+    /* Matches .bold-names (which uses heading font by default if not specified, but let's double check) - actually bold-names inherits h1 which is heading. */
+    /* wait, .bold-names inherits h1 font which is Playfair Display (heading) */
+    color: var(--color-warm-taupe);
+    /* h1 color is warm-taupe */
     margin-bottom: var(--spacing-md);
     margin-top: var(--spacing-lg);
 }
