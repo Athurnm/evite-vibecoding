@@ -11,6 +11,9 @@ A premium, "Ethereal Earth" themed wedding invitation web application. Built as 
   - **Guest Personalization:** `?to=Name` logic to personalize the greeting.
   - **Time Variants:** `?type=akad` vs `?type=resepsi` (default) views.
   - **Wishes Carousel:** Read wishes from other guests in real-time.
+- **Bilingual Support:**
+  - Full English and Bahasa Indonesia translations.
+  - Sticky language toggle for easy switching.
 - **Interactive Story:** Vertical timeline with floating floral animations.
 - **RSVP System:**
   - Submit Name, Attendance, and Wishes.
