@@ -137,6 +137,7 @@ h4 {
 }
 
 /* Language Toggle */
+/* Language Toggle */
 .lang-toggle {
     display: flex;
     align-items: center;
@@ -144,11 +145,17 @@ h4 {
     font-family: var(--font-body);
     font-size: 0.9rem;
     letter-spacing: 1px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #3E2F26;
+    /* Deep Earth */
     backdrop-filter: blur(4px);
-    padding: 5px 10px;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 8px 16px;
+    /* Slightly larger padding */
+    border-radius: 30px;
+    /* More rounded */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    /* Prominent shadow */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle highlight */
 }
 
 .lang-btn {
@@ -157,20 +164,22 @@ h4 {
     cursor: pointer;
     font-family: inherit;
     font-weight: 500;
-    color: #999;
-    transition: color 0.3s;
+    color: rgba(245, 245, 240, 0.6);
+    /* Inactive color */
+    transition: all 0.3s;
     padding: 2px 5px;
 }
 
 .lang-btn.active,
 .lang-btn:hover {
-    color: var(--color-warm-taupe);
+    color: var(--color-bone-ivory);
     font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .lang-divider {
-    color: var(--color-warm-taupe);
-    opacity: 0.5;
+    color: rgba(245, 245, 240, 0.4);
+    font-weight: 300;
 }
 
 /* Main Content */
