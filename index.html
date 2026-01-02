@@ -22,6 +22,14 @@
 
 <body>
     <div id="app">
+        <!-- Language Toggle Fixed -->
+        <div id="sticky-controls" class="fade-in">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <span class="lang-divider">|</span>
+                <button class="lang-btn" data-lang="id">ID</button>
+            </div>
+        </div>
         <!-- Cover Section -->
         <!-- Cover Section -->
         <header id="cover" class="cover">
@@ -29,21 +37,31 @@
             <img src="/assets/floral_corner.png" class="corner-decoration top-right">
             <img src="/assets/floral_corner.png" class="corner-decoration bottom-left">
 
-            <div class="cover-content">
-                <p class="subtitle fade-in">The Wedding of</p>
-                <h1 class="title fade-in bold-names">Athur & Dara</h1>
-                <p class="date fade-in">Saturday, March 28th, 2026</p>
+            <!-- Language Toggle (Moved here for fixed positioning or absolute over cover, but plan says fixed) -->
+            <!-- We'll place it directly in #app or body if we want it fixed viewport-wide -->
 
-                <p class="guest-greeting fade-in">Dear <span id="guest-name"
+
+            <div class="cover-content">
+                <!-- Language Toggle -->
+                <div class="lang-toggle fade-in">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="id">ID</button>
+                </div>
+
+                <p class="subtitle fade-in" data-i18n="title">The Wedding of</p>
+                <h1 class="title fade-in bold-names">Athur & Dara</h1>
+                <p class="date fade-in" data-i18n="hero_date">Saturday, March 28th, 2026</p>
+
+                <p class="guest-greeting fade-in"><span data-i18n="guest_greeting">Dear</span> <span id="guest-name"
                         class="guest-bold">Bapak/Ibu/Saudara/i</span>,</p>
 
-                <p class="invitation-text fade-in">
-                    "Tanpa mengurangi rasa hormat, kami<br>
-                    mengundang anda untuk menghadiri<br>
-                    acara pernikahan kami."
+                <p class="invitation-text fade-in" data-i18n="invitation_text">
+                    "Without diminishing our respect, we invite you to attend our wedding ceremony."
                 </p>
 
-                <button id="open-invitation" class="btn-primary fade-in pulse-btn">Open Invitation</button>
+                <button id="open-invitation" class="btn-primary fade-in pulse-btn" data-i18n="open_btn">Open
+                    Invitation</button>
             </div>
         </header>
 
@@ -52,14 +70,14 @@
 
             <!-- NEW: Couple Section -->
             <section id="couple" class="couple section fade-in">
-                <h2 class="section-title">The Bride & The Groom</h2>
+                <h2 class="section-title" data-i18n="couple_section_title">The Bride & The Groom</h2>
 
                 <div class="couple-container">
                     <!-- The Bride -->
                     <div class="couple-block">
-                        <h3 class="couple-role">The Bride</h3>
-                        <h2 class="couple-name">Dara Afiifah Meizwar, S.T.</h2>
-                        <p class="couple-subtitle">Putri Pertama Dari</p>
+                        <h3 class="couple-role" data-i18n="bride_role">The Bride</h3>
+                        <h2 class="couple-name">Dara Afiifah Meizwar, S.Si.</h2>
+                        <p class="couple-subtitle" data-i18n="daughter_of">Putri Pertama Dari</p>
                         <p class="couple-parents">Bapak Geki Fedia, S.P.<br>& Ibu Rosi Tabris, S.P.</p>
                     </div>
 
@@ -67,9 +85,9 @@
 
                     <!-- The Groom -->
                     <div class="couple-block">
-                        <h3 class="couple-role">The Groom</h3>
+                        <h3 class="couple-role" data-i18n="groom_role">The Groom</h3>
                         <h2 class="couple-name">Athur Naufan Muharam, S.T.</h2>
-                        <p class="couple-subtitle">Putra Kedua Dari</p>
+                        <p class="couple-subtitle" data-i18n="son_of">Putra Kedua Dari</p>
                         <p class="couple-parents">Bapak Ir. Amin Sardjono, M.M.<br>& Ibu Dra. Dian Nurdiani T.
                         </p>
                     </div>
@@ -79,9 +97,9 @@
             <!-- Hero / Header -->
             <header class="hero section fade-in">
                 <img src="/assets/monogram.png" alt="QD Monogram" class="header-monogram">
-                <h2>The Wedding of</h2>
+                <h2 data-i18n="hero_title">The Wedding of</h2>
                 <h1 class="couple-names">Athur <span class="script-font">&</span> Dara</h1>
-                <p class="date">March 28th, 2026</p>
+                <p class="date" data-i18n="hero_date">March 28th, 2026</p>
             </header>
 
             <!-- The Couple -->
@@ -90,7 +108,7 @@
                 <div class="illustration-container">
                     <img src="/assets/couple-illustration.png" alt="Athur & Dara Illustration" class="couple-img">
                 </div>
-                <blockquote class="quote">
+                <blockquote class="quote" data-i18n="quote">
                     "Of all the plans I’ve made, meeting you was the only uncalculated variable that became my greatest
                     constant."
                 </blockquote>
@@ -104,7 +122,7 @@
                             class="floral-img floating-animation">
                     </div>
                     <div class="story-content-wrapper">
-                        <h2 class="section-title">Our Journey</h2>
+                        <h2 class="section-title" data-i18n="story_title">Our Journey</h2>
                         <div class="timeline">
                             <!-- Rendered from JS/Markdown content -->
                             <div id="story-container"></div>
@@ -118,7 +136,7 @@
                 <div class="illustration-container">
                     <img src="/assets/couple_silhouette_2.png" alt="Couple Silhouette" class="couple-img-small">
                 </div>
-                <blockquote class="quran-quote">
+                <blockquote class="quran-quote" data-i18n="quran_quote">
                     "Dan diantara ayat-ayat-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya
                     kamu merasa nyaman kepadanya, dan dijadikan-Nya di antaramu mawadah dan rahmah. Sesungguhnya pada
                     yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.”
@@ -133,79 +151,82 @@
                     <img src="/assets/vine.png" alt="Decoration" class="vine-img" id="scroll-vine">
                 </div>
 
-                <div class="save-the-date-header">
-                    <h2 class="section-title">Save The Date</h2>
-                    <p class="event-date-main">SATURDAY, MARCH 28TH, 2026</p>
-                    <button id="add-to-calendar" class="btn-outline">Add to Google Calendar</button>
-                </div>
-
-                <div class="event-schedule">
-                    <!-- AKAD SECTION -->
-                    <div class="event-block">
-                        <h3 class="event-type">AKAD</h3>
-                        <p class="event-time" id="akad-time">08:00 - 10:00 WIB</p>
-                        <div class="event-venue">
-                            <p class="venue-name">STEIKHAUS, BANDUNG</p>
-                            <p class="venue-address">(Indoor & Semi-Outdoor)</p>
-                        </div>
-                        <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
-                            Maps</a>
+                <div class="event-schedule-container">
+                    <div class="save-the-date-header">
+                        <h2 class="section-title" data-i18n="save_the_date">Save The Date</h2>
+                        <p class="event-date-main" data-i18n="date_main">SATURDAY, MARCH 28TH, 2026</p>
+                        <button id="add-to-calendar" class="btn-outline" data-i18n="add_calendar">Add to Google
+                            Calendar</button>
                     </div>
 
-                    <!-- RESEPSI SECTION -->
-                    <div class="event-block">
-                        <h3 class="event-type">RESEPSI</h3>
-                        <p class="event-time">11:00 - 13:00 WIB</p>
-                        <div class="event-venue">
-                            <p class="venue-name">STEIKHAUS, BANDUNG</p>
-                            <p class="venue-address">(Indoor & Semi-Outdoor)</p>
+                    <div class="event-schedule">
+                        <!-- AKAD SECTION -->
+                        <div class="event-block">
+                            <h3 class="event-type" data-i18n="akad_title">AKAD</h3>
+                            <p class="event-time" id="akad-time">08:00 - 10:00 WIB</p>
+                            <div class="event-venue">
+                                <p class="venue-name">STEIKHAUS, BANDUNG</p>
+                                <p class="venue-address" data-i18n="akad_venue">(Indoor & Semi-Outdoor)</p>
+                            </div>
+                            <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
+                                Maps</a>
                         </div>
-                        <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
-                            Maps</a>
+
+                        <!-- RESEPSI SECTION -->
+                        <div class="event-block">
+                            <h3 class="event-type" data-i18n="resepsi_title">RESEPSI</h3>
+                            <p class="event-time">11:00 - 13:00 WIB</p>
+                            <div class="event-venue">
+                                <p class="venue-name">STEIKHAUS, BANDUNG</p>
+                                <p class="venue-address" data-i18n="resepsi_venue">(Indoor & Semi-Outdoor)</p>
+                            </div>
+                            <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
+                                Maps</a>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- RSVP -->
             <section class="rsvp section fade-in">
-                <h2 class="section-title">RSVP</h2>
+                <h2 class="section-title" data-i18n="rsvp_title">RSVP</h2>
                 <form id="rsvp-form">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name" data-i18n="label_name">Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group row">
                         <div class="col-half">
-                            <label for="adults">Adults</label>
+                            <label for="adults" data-i18n="label_adults">Dewasa</label>
                             <select id="adults" name="adults" required>
                                 <!-- Options injected via JS -->
                             </select>
                         </div>
                         <div class="col-half">
-                            <label for="children">Children</label>
+                            <label for="children" data-i18n="label_children">Anak-anak</label>
                             <select id="children" name="children" required>
                                 <!-- Options injected via JS -->
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="attendance">Will you attend?</label>
+                        <label for="attendance" data-i18n="label_attendance">Apakah Anda akan hadir?</label>
                         <select id="attendance" name="attendance">
-                            <option value="yes">Yes, I will attend</option>
-                            <option value="no">Sorry, I can't make it</option>
+                            <option value="yes" data-i18n="option_yes">Ya, Saya akan hadir</option>
+                            <option value="no" data-i18n="option_no">Maaf, Saya tidak bisa hadir</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="wishes">Wishes</label>
+                        <label for="wishes" data-i18n="label_wishes">Doa & Harapan</label>
                         <textarea id="wishes" name="wishes" rows="4"
-                            placeholder="Write your warm wishes here..."></textarea>
+                            placeholder="Tuliskan doa dan harapan Anda..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary">Confirm Presence</button>
+                    <button type="submit" class="btn-primary">Konfirmasi Kehadiran</button>
                 </form>
 
                 <!-- Success Message Container -->
                 <div id="rsvp-success" class="thank-you-message hidden">
-                    <h3 class="rsvp-success-header">THANK YOU</h3>
+                    <h3 class="rsvp-success-header">TERIMA KASIH</h3>
                     <p class="rsvp-success-msg">
                         Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir
                         di hari bahagia kami.
@@ -217,24 +238,27 @@
                 <!-- Dress Code Section -->
                 <div class="guest-guide-spacer"></div>
                 <div class="dress-code-section fade-in">
-                    <h3 class="guide-title">Attire Guide</h3>
-                    <p class="guide-vibes">Vibes: Formal & Earthy</p>
+                    <h3 class="guide-title" data-i18n="attire_title">Attire Guide</h3>
+                    <p class="guide-vibes" data-i18n="attire_vibes">Vibes: Formal & Earthy</p>
 
                     <div class="attire-flex">
                         <div class="attire-block">
-                            <h4 class="attire-gender script-font">Gentlemen</h4>
-                            <p><strong class="highlight-text">Batik Lengan Panjang</strong><br>or Formal Suit</p>
+                            <h4 class="attire-gender script-font" data-i18n="attire_gentlemen">Gentlemen</h4>
+                            <p data-i18n="attire_gentlemen_desc"><strong class="highlight-text">Batik Lengan
+                                    Panjang</strong><br>or Formal Suit</p>
                         </div>
                         <div class="attire-block">
-                            <h4 class="attire-gender script-font">Ladies</h4>
-                            <p><strong class="highlight-text">Formal Modest Dress</strong><br>or Modern Modest Kebaya
+                            <h4 class="attire-gender script-font" data-i18n="attire_ladies">Ladies</h4>
+                            <p data-i18n="attire_ladies_desc"><strong class="highlight-text">Formal Modest
+                                    Dress</strong><br>or Modern Modest Kebaya
                             </p>
-                            <p class="attire-note">Kindly keep it modest, not too tight, yet elegant</p>
+                            <p class="attire-note" data-i18n="attire_note">Kindly keep it modest, not too tight, yet
+                                elegant</p>
                         </div>
                     </div>
 
                     <div class="color-palette">
-                        <p class="palette-title">Color Palette</p>
+                        <p class="palette-title" data-i18n="palette_title">Color Palette</p>
                         <div class="palette-circles">
                             <div class="palette-item">
                                 <span class="color-circle" style="background-color: #8A9A5B;"></span>
@@ -256,30 +280,31 @@
                     </div>
 
                     <div class="avoid-attire">
-                        <p>Please kindly avoid <strong>White</strong> attire & No T-shirts</p>
+                        <p data-i18n="avoid_attire">Please kindly avoid <strong>White</strong> attire & No T-shirts</p>
                     </div>
                 </div>
 
                 <!-- Do's and Dont's Section -->
                 <div class="dos-donts-section fade-in">
-                    <h3 class="guide-title">Guest Guidelines</h3>
+                    <h3 class="guide-title" data-i18n="guidelines_title">Guest Guidelines</h3>
                     <div class="guidelines-container">
                         <div class="guideline-col dos">
-                            <h4 class="guideline-header">Do's</h4>
+                            <h4 class="guideline-header" data-i18n="dos_title">Do's</h4>
                             <ul class="guideline-list">
-                                <li>RSVP is a Must</li>
-                                <li>Dress according to Code</li>
-                                <li>Tag us <span class="hashtag-small">#AthurHidupDenganDara</span></li>
-                                <li>Be present (limit phone usage)</li>
+                                <li data-i18n="dos_list_1">RSVP is a Must</li>
+                                <li data-i18n="dos_list_2">Dress according to Code</li>
+                                <li data-i18n="dos_list_3">Tag us <span
+                                        class="hashtag-small">#AthurHidupDenganDara</span></li>
+                                <li data-i18n="dos_list_4">Be present (limit phone usage)</li>
                             </ul>
                         </div>
                         <div class="guideline-col donts">
-                            <h4 class="guideline-header">Don'ts</h4>
+                            <h4 class="guideline-header" data-i18n="donts_title">Don'ts</h4>
                             <ul class="guideline-list">
-                                <li>Wear white attire</li>
-                                <li>Bring uninvited guests</li>
-                                <li>Block the photographers</li>
-                                <li>Forget to have fun!</li>
+                                <li data-i18n="donts_list_1">Wear white attire</li>
+                                <li data-i18n="donts_list_2">Bring uninvited guests</li>
+                                <li data-i18n="donts_list_3">Block the photographers</li>
+                                <li data-i18n="donts_list_4">Forget to have fun!</li>
                             </ul>
                         </div>
                     </div>
@@ -287,11 +312,11 @@
 
                 <!-- Wishes Carousel -->
                 <div id="wishes-section" class="wishes-carousel hidden-initially">
-                    <h3>Warm Wishes</h3>
+                    <h3 data-i18n="wishes_title">Warm Wishes</h3>
                     <div class="carousel-container">
                         <button id="prev-wish" class="nav-btn">&lt;</button>
                         <div id="wish-display" class="wish-card">
-                            <p class="wish-text">Loading wishes...</p>
+                            <p class="wish-text" data-i18n="loading_wishes">Loading wishes...</p>
                             <span class="wish-author"></span>
                         </div>
                         <button id="next-wish" class="nav-btn">&gt;</button>
@@ -302,9 +327,9 @@
             <!-- Closing -->
             <footer class="closing section fade-in">
                 <h2 class="monogram-small">A & D</h2>
-                <p>Thank You</p>
+                <p data-i18n="footer_thank_you">Thank You</p>
                 <div class="credit">
-                    <p>Build with ❤️ by <a href="https://github.com/Athurnm" target="_blank"
+                    <p data-i18n="footer_credit">Built with ❤️ by <a href="https://github.com/Athurnm" target="_blank"
                             class="credit-link">athurnm</a> for Dara & Me</p>
                 </div>
             </footer>

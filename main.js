@@ -1,6 +1,106 @@
 import './style.css'
+import { translations } from './translations.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Language Toggle Logic
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentLang = 'en'; // Default
+
+    function updateLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        // Update active button state
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update Text Content
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (key.startsWith('placeholder_')) {
+                        el.placeholder = t[key];
+                    }
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = t[key];
+                } else {
+                    el.innerHTML = t[key];
+                }
+            }
+        });
+
+        // Update placeholders specifically if keys differ
+        const wishesTextarea = document.getElementById('wishes');
+        if (wishesTextarea && t.placeholder_wishes) {
+            wishesTextarea.placeholder = t.placeholder_wishes;
+        }
+
+        // Re-render Story
+        if (t.story) {
+            renderStory(t.story);
+        }
+
+        // Re-render Akad Time Logic
+        updateAkadTime(t);
+    }
+
+    function renderStory(storyData) {
+        const storyContainer = document.getElementById('story-container');
+        if (!storyContainer) return;
+
+        storyContainer.innerHTML = ''; // Clear existing
+
+        storyData.forEach((item, index) => {
+            const itemEl = document.createElement('div');
+            itemEl.classList.add('timeline-item');
+            itemEl.classList.add('fade-in');
+
+            itemEl.innerHTML = `
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">${item.date}</span>
+                    <h3>${item.title}</h3>
+                    <h4 class="timeline-subtitle">"${item.subtitle}"</h4>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+            storyContainer.appendChild(itemEl);
+
+            setTimeout(() => {
+                itemEl.classList.add('visible');
+            }, 100 + (index * 200));
+        });
+    }
+
+    // Extracted Time Variant Logic to update on language switch
+    function updateAkadTime(t) {
+        const eventType = params.get('type') || 'resepsi';
+        const akadTimeElement = document.getElementById('akad-time');
+
+        if (akadTimeElement) {
+            if (eventType === 'akad') {
+                akadTimeElement.textContent = t ? t.akad_time_default : "08:00 - 10:00 WIB";
+            } else {
+                akadTimeElement.textContent = t ? t.akad_time_resepsi : "Done in the morning";
+            }
+        }
+    }
+
+    // Initialize listeners
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            updateLanguage(lang);
+        });
+    });
+
+
     const params = new URLSearchParams(window.location.search);
 
     // 1. Guest Name Logic & Pre-fill
@@ -35,7 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const openBtn = document.getElementById('open-invitation');
     const cover = document.getElementById('cover');
     const mainContent = document.getElementById('main-content');
-    const bgMusic = new Audio(); // Placeholder
+
+    // Initialize Language (Default EN) which also renders story and time
+    updateLanguage('en');
+
 
     openBtn.addEventListener('click', () => {
         cover.classList.add('hide');
@@ -47,57 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 5. Story Content
-    const storyContainer = document.getElementById('story-container');
-    const storyData = [
-        {
-            title: "The Spark",
-            subtitle: "One in a Million",
-            date: "Dec 2023",
-            desc: "It all started at the TWICE concert. Nervous first impressions turned into excitement amidst the music and lights. We didn't know it yet, but this was literally the prologue"
-        },
-        {
-            title: "The Reconnection",
-            subtitle: "Jumping into Love",
-            date: "Aug 2024",
-            desc: "After some time, we reconnected at Jakarta. We bounced around (pun intended) and realized we wanted to know more about each other"
-        },
-        {
-            title: "The Deep Dive",
-            subtitle: "Catching Feelings",
-            date: "Oct 2024 - Sep 2025",
-            desc: "October was our month. From deep talks to getting emotional over movies, we showed our true colors. Vulnerability became our strength."
-        },
-        {
-            title: "The Commitment",
-            subtitle: "Khitbah Day",
-            date: "Dec 2025",
-            desc: "The families met, the question was popped (officially), and we bridged our two worlds together. A mix of nerves and pure joy as we locked in our future"
-        },
-        {
-            title: "The Beginning",
-            subtitle: "The Wedding Day",
-            date: "Mar 2026",
-            desc: "And here we are. Ready to start our biggest adventure yet"
-        }
-    ];
+    // Initial render is handled by updateLanguage('en') call below or manual init
+    // Removing static storyData
 
-    storyData.forEach((item, index) => {
-        const itemEl = document.createElement('div');
-        itemEl.classList.add('timeline-item');
-        itemEl.classList.add('fade-in');
-        itemEl.style.transitionDelay = `${index * 0.2}s`;
-
-        itemEl.innerHTML = `
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <span class="timeline-date">${item.date}</span>
-                <h3>${item.title}</h3>
-                <h4 class="timeline-subtitle">"${item.subtitle}"</h4>
-                <p>${item.desc}</p>
-            </div>
-        `;
-        storyContainer.appendChild(itemEl);
-    });
 
     // 6. Add to Calendar Logic
     const calendarBtn = document.getElementById('add-to-calendar');
