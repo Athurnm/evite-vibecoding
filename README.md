@@ -15,17 +15,18 @@ A premium, "Ethereal Earth" themed wedding invitation web application. Built as 
   - Full English and Bahasa Indonesia translations.
   - Sticky language toggle for easy switching.
 - **Interactive Story:** Vertical timeline with floating floral animations.
+- **Background Music:** Auto-play audio with a floating mute/unmute toggle.
 - **RSVP System:**
   - Submit Name, Attendance, and Wishes.
-  - Data stored securely in SQLite database.
+  - Data stored securely in PostgreSQL database.
   - "Add to Google Calendar" integration.
 - **Admin Features:** Download RSVP data as CSV.
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** Vite, Vanilla JS, CSS Variables (No heavy frameworks).
-- **Backend:** Node.js, Express.js.
-- **Database:** SQLite (Lightweight, file-based).
+- **Backend:** Vercel Serverless Functions (Node.js).
+- **Database:** Vercel Postgres.
 - **Tools:** `csv-writer` for exports.
 
 ## 🚀 Getting Started
@@ -33,7 +34,7 @@ A premium, "Ethereal Earth" themed wedding invitation web application. Built as 
 ### Prerequisites
 
 - Node.js (v18+ recommended)
-- BPM (npm or yarn)
+- Package Manager (npm or yarn)
 
 ### Installation
 
@@ -52,20 +53,18 @@ A premium, "Ethereal Earth" themed wedding invitation web application. Built as 
 
 ### 🏃‍♂️ Running the Application
 
-To run the full application (Frontend + Backend), you'll need two terminal windows:
-
-**Terminal 1 (Backend API):**
+To run the full application (Frontend + Backend), use the Vercel CLI:
 
 ```bash
-node server.js
-# Server runs at http://localhost:3000
+vercel dev
+# Runs at http://localhost:3000
 ```
 
-**Terminal 2 (Frontend Dev Server):**
+Or for frontend-only development:
 
 ```bash
 npm run dev
-# Frontend runs at http://localhost:5173
+# Frontend runs at http://localhost:5173 (API calls will fail without backend)
 ```
 
 ### Deployment via Vercel (Recommended)
@@ -105,13 +104,14 @@ For the best local experience with Serverless Functions:
 
 ## 📂 Project Structure
 
-```
+```text
 ├── public/assets/       # Images & Static assets
+├── api/                 # Serverless Backend Functions
 ├── index.html           # Main HTML entry
 ├── main.js              # Frontend Logic (Carousel, RSVP, URL Params)
+├── translations.js      # Bilingual Text Data
+├── our-story.md         # Content for Our Story section
 ├── style.css            # Global Styles (CSS Variables)
-├── server.js            # Express Backend & SQLite setup
-├── rsvp.db              # SQLite Database (Auto-created)
 ├── design-guideline.md  # Brand & Design Guidelines
 └── package.json         # Dependencies
 ```
