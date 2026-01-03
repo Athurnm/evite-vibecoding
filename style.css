@@ -594,10 +594,10 @@ a.btn-secondary {
 }
 
 .event-schedule-container {
-    background-color: rgba(62, 47, 38, 0.85);
-    /* Deep Earth with high opacity */
+    background-color: rgba(168, 159, 145, 0.7);
+    /* Lighter Taupe with transparency */
     backdrop-filter: blur(4px);
-    border-radius: 12px;
+    border-radius: 30px;
     padding: var(--spacing-xl) var(--spacing-md);
     margin-top: var(--spacing-md);
     border: 1px solid rgba(245, 245, 240, 0.1);
