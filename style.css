@@ -594,13 +594,34 @@ a.btn-secondary {
 }
 
 .event-schedule-container {
-    background-color: rgba(255, 255, 255, 0.60);
+    background-color: rgba(62, 47, 38, 0.85);
+    /* Deep Earth with high opacity */
     backdrop-filter: blur(4px);
     border-radius: 12px;
     padding: var(--spacing-xl) var(--spacing-md);
     margin-top: var(--spacing-md);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(245, 245, 240, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: var(--color-bone-ivory);
+}
+
+.external-floral-divider {
+    width: 100%;
+    height: 60px;
+    background-image: url('/assets/floral_divider_pattern.png');
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: contain;
+    z-index: 10;
+    position: relative;
+    opacity: 0.9;
+    /* Negative margins to pull closer to container */
+    margin-bottom: -10px;
+}
+
+.external-floral-divider.bottom {
+    margin-top: -10px;
+    margin-bottom: 0;
 }
 
 .event-schedule {
@@ -701,8 +722,41 @@ a.btn-secondary {
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--color-text-dark);
+    color: var(--color-bone-ivory);
     margin-bottom: var(--spacing-sm);
+}
+
+/* Override dark text inside the container */
+.event-schedule-container .section-title,
+.event-schedule-container .event-type,
+.event-schedule-container .venue-name {
+    color: var(--color-bone-ivory);
+}
+
+.event-schedule-container .event-time,
+.event-schedule-container .venue-address,
+.event-schedule-container .range-separator {
+    color: rgba(245, 245, 240, 0.9);
+}
+
+.event-schedule-container .btn-outline {
+    border-color: var(--color-bone-ivory);
+    color: var(--color-bone-ivory);
+}
+
+.event-schedule-container .btn-outline:hover {
+    background-color: var(--color-bone-ivory);
+    color: var(--color-text-dark);
+}
+
+.event-schedule-container .btn-map {
+    border-color: rgba(245, 245, 240, 0.5);
+    color: var(--color-bone-ivory);
+}
+
+.event-schedule-container .btn-map:hover {
+    background-color: var(--color-bone-ivory);
+    color: var(--color-text-dark);
 }
 
 /* RSVP Success Styling */
