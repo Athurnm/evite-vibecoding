@@ -599,10 +599,33 @@ a.btn-secondary {
     backdrop-filter: blur(4px);
     border-radius: 30px;
     padding: var(--spacing-xl) var(--spacing-md);
+    padding-bottom: 6rem;
+    /* Extra whitespace at bottom */
     margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     border: 1px solid rgba(245, 245, 240, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     color: var(--color-bone-ivory);
+    position: relative;
+    z-index: 5;
+}
+
+.vine-decoration {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.vine-img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .external-floral-divider {
