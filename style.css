@@ -1287,3 +1287,39 @@ a.btn-secondary {
         flex-direction: row;
     }
 }
+
+/* Music Toggle */
+.music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-warm-taupe);
+    color: var(--color-paper-white);
+    border: 2px solid var(--color-bone-ivory);
+    cursor: pointer;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    background-color: var(--color-warm-taupe);
+    /* Ensure color stays same */
+}
+
+.music-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+.music-toggle .hidden {
+    display: none;
+}

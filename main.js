@@ -356,4 +356,58 @@ document.addEventListener('DOMContentLoaded', () => {
             vineImg.style.height = `${percentage}%`;
         });
     }
+
+
+    // 11. Music Control
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-toggle');
+    if (music && musicBtn) {
+        const iconPlay = musicBtn.querySelector('.icon-play');
+        const iconMute = musicBtn.querySelector('.icon-mute');
+        let isPlaying = false;
+
+        function toggleIcons(playing) {
+            if (playing) {
+                iconPlay.classList.remove('hidden');
+                iconMute.classList.add('hidden');
+            } else {
+                iconPlay.classList.add('hidden');
+                iconMute.classList.remove('hidden');
+            }
+        }
+
+        function playMusic() {
+            music.play().then(() => {
+                isPlaying = true;
+                toggleIcons(true);
+            }).catch((error) => {
+                console.log("Auto-play prevented (User must interact first):", error);
+                isPlaying = false;
+                toggleIcons(false);
+            });
+        }
+
+        // Attempt Play
+        playMusic();
+
+        // Toggle
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                toggleIcons(false);
+            } else {
+                playMusic();
+            }
+        });
+
+        // Fallback Auto-play on first click (if blocked)
+        const unlockAudio = () => {
+            if (!isPlaying) {
+                playMusic();
+            }
+            document.body.removeEventListener('click', unlockAudio);
+        };
+        document.body.addEventListener('click', unlockAudio);
+    }
 });
