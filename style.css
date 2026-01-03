@@ -1264,3 +1264,79 @@ a.btn-secondary {
         flex-direction: row;
     }
 }
+
+/* Walking Ducks Animation */
+#duck-parade {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.duck {
+    position: absolute;
+    bottom: 10px;
+    width: 64px;
+    height: 64px;
+    background-image: url('/assets/duck_walk_sprite.png');
+    background-size: 256px 64px;
+    /* 4 frames * 64px */
+    animation: duck-walk 0.6s steps(4) infinite, duck-move 20s linear infinite;
+    image-rendering: pixelated;
+    /* Optional: keeps line art crisp */
+}
+
+.duck.follower {
+    animation-delay: 0s, 2s;
+    /* Delays movement to trail behind */
+    opacity: 0.9;
+    transform: scale(0.9);
+    /* Slightly smaller follower */
+    filter: brightness(0.9);
+    /* Slight variation */
+}
+
+@keyframes duck-walk {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -256px 0;
+    }
+}
+
+@keyframes duck-move {
+    from {
+        left: -100px;
+    }
+
+    to {
+        left: 100vw;
+    }
+}
+
+/* Mobile Adjustments for Ducks */
+@media (max-width: 600px) {
+    .duck {
+        width: 48px;
+        height: 48px;
+        background-size: 192px 48px;
+        /* 4 * 48 */
+        bottom: 5px;
+    }
+
+    @keyframes duck-walk {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: -192px 0;
+        }
+    }
+}
