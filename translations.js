@@ -111,7 +111,7 @@ export const translations = {
                 title: "Awal Mula",
                 subtitle: "One in a Million",
                 date: "Des 2023",
-                desc: "Berawal di konser TWICE. Kesan pertama yang grogi berubah menjadi keseruan di tengah musik dan cahaya. Kami belum tahu, tapi ini benar-benar prolog kami."
+                desc: "Berawal di konser TWICE. Kesan pertama yang grogi menjadi keseruan di tengah musik dan cahaya. Kami belum tahu, tapi ini akan jadi awal perjalanan kami."
             },
             {
                 title: "Pertemuan Kembali",
@@ -123,13 +123,13 @@ export const translations = {
                 title: "Mengenal Lebih Dalam",
                 subtitle: "Mulai Merasa",
                 date: "Okt 2024 - Sep 2025",
-                desc: "Oktober adalah bulan kami. Dari obrolan mendalam hingga terbawa emosi saat nonton film, kami menunjukkan warna asli kami. Kerentanan menjadi kekuatan kami."
+                desc: "Dari obrolan mendalam hingga terbawa emosi saat nonton film, kami menunjukkan warna asli kami. Kerentanan menjadi kekuatan kami."
             },
             {
                 title: "Komitmen",
                 subtitle: "Hari Khitbah",
                 date: "Des 2025",
-                desc: "Keluarga bertemu, pertanyaan (resmi) diajukan, dan kami menjembatani dua dunia kami. Campuran rasa gugup dan sukacita murni saat kami mengunci masa depan kami."
+                desc: "Keluarga bertemu, pertanyaan diajukan, dan kami menjembatani dua dunia kami. Campuran rasa gugup dan sukacita murni saat kami mengunci masa depan kami."
             },
             {
                 title: "Awal Baru",
