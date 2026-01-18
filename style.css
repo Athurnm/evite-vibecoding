@@ -145,7 +145,7 @@ h4 {
     font-family: var(--font-body);
     font-size: 0.9rem;
     letter-spacing: 1px;
-    background-color: #3E2F26;
+    background-color: #A89F91;
     /* Deep Earth */
     backdrop-filter: blur(4px);
     padding: 8px 16px;
@@ -783,15 +783,35 @@ a.btn-secondary {
 }
 
 /* RSVP Success Styling */
+/* RSVP Success Styling */
 .thank-you-message {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     padding: var(--spacing-xl) 0;
-    /* More top padding */
     width: 100%;
     margin: 0 auto;
+    min-height: 400px;
+    /* Ensure vertical space */
+    gap: 24px;
+    /* Uniform spacing between sections */
+}
+
+.thank-you-message p {
+    margin: 0;
+    /* Remove default margins, rely on gap */
+    line-height: 1.6;
+}
+
+/* Ensure buttons in success message are same size */
+.thank-you-message .btn-small,
+.thank-you-message .btn-primary,
+.thank-you-message .btn-outline {
+    min-width: 200px;
+    font-size: 0.9rem;
+    padding: 10px 20px;
 }
 
 /* Gift Registry Section */
@@ -800,6 +820,7 @@ a.btn-secondary {
     font-family: var(--font-body);
     font-style: italic;
     color: var(--color-warm-taupe);
+    font-size: 0.9rem;
 }
 
 .registry-tabs {

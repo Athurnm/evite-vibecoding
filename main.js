@@ -461,27 +461,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadGifts() {
+        const select = document.getElementById('gift-item');
+        if (!select) return;
+
+        const currentVal = select.value;
+
         try {
             const res = await fetch('/api/registry');
             if (res.ok) {
                 const gifts = await res.json();
-                gifts.forEach(giftObject => {
-                    const giftName = giftObject.item;
-                    if (giftName) {
-                        const option = document.createElement('option');
-                        option.value = giftName;
-                        option.textContent = giftName;
 
-                        // Insert before "Other"
-                        const otherOption = giftItemSelect.querySelector('option[value="other"]');
-                        giftItemSelect.insertBefore(option, otherOption);
+                // OPTIMIZATION: Check if data changed to avoid UI flickering/reset
+                // Get current option values (excluding placeholder and other)
+                const currentOptions = Array.from(select.options)
+                    .filter(opt => opt.value && opt.value !== 'other')
+                    .map(opt => ({ item: opt.value, link: opt.dataset.link }));
+
+                // Compare lengths
+                const changed = gifts.length !== currentOptions.length ||
+                    gifts.some((g, i) => g.item !== currentOptions[i].item || g.link !== currentOptions[i].link);
+
+                if (!changed) {
+                    // Data matches, do nothing to preserve UI state
+                    return;
+                }
+
+                // Data changed, rebuild
+                select.innerHTML = '<option value="" disabled selected data-i18n="select_gift_placeholder">Select a gift...</option>';
+
+                gifts.forEach(g => {
+                    const option = document.createElement('option');
+                    option.value = g.item;
+                    option.textContent = g.item;
+                    if (g.link) {
+                        option.dataset.link = g.link;
                     }
+                    select.appendChild(option);
                 });
+
+                // Add "Other" option
+                const otherOption = document.createElement('option');
+                otherOption.value = 'other';
+                otherOption.textContent = "Other (I'll choose my own...)";
+                otherOption.setAttribute('data-i18n', 'option_other');
+                select.appendChild(otherOption);
+
+                // Restore selection if valid
+                if (currentVal && currentVal !== 'other') {
+                    // Check if the previously selected item still exists in the new list
+                    const exists = gifts.some(g => g.item === currentVal);
+                    if (exists) {
+                        select.value = currentVal;
+                    }
+                } else if (currentVal === 'other') {
+                    select.value = 'other';
+                }
+
+                // Update translations
+                if (typeof updateLanguage === 'function') {
+                    updateLanguage(currentLang);
+                }
+
             }
-        } catch (e) {
-            console.error("Failed to load registry", e);
+        } catch (error) {
+            console.error('Failed to load gifts:', error);
         }
     }
+
+    // Load initially
+    loadGifts();
+
+    // Fetch on mousedown (when user clicks to open dropdown)
+    if (giftItemSelect) {
+        giftItemSelect.addEventListener('mousedown', () => {
+            loadGifts();
+        });
+    }
+
 
     const giftForm = document.getElementById('gift-form');
     if (giftForm) {
@@ -509,11 +565,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (res.ok) {
                     giftForm.classList.add('hidden');
                     document.getElementById('gift-success').classList.remove('hidden');
+
+                    // Handle Product Link Recommendation
+                    const productLinkArea = document.getElementById('gift-product-recommendation');
+                    const productLinkBtn = document.getElementById('gift-product-link');
+
+                    // Get selected option from the dropdown
+                    const selectElement = document.getElementById('gift-item');
+                    const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                    if (selectedOption && selectedOption.dataset.link) {
+                        productLinkArea.classList.remove('hidden');
+                        productLinkBtn.href = selectedOption.dataset.link;
+                    } else {
+                        productLinkArea.classList.add('hidden');
+                    }
+
                 } else {
                     throw new Error('Failed');
                 }
             } catch (err) {
                 alert('Failed to send gift. Please try again.');
+                console.error(err);
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }

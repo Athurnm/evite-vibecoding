@@ -246,7 +246,8 @@
                         <div class="attire-block">
                             <h4 class="attire-gender script-font" data-i18n="attire_gentlemen">Gentlemen</h4>
                             <p data-i18n="attire_gentlemen_desc"><strong class="highlight-text">Batik Lengan
-                                    Panjang</strong><br>or Formal Suit</p>
+                                    Panjang</strong><br>or Formal Suit/Shirt</p>
+                            <p class="attire-note" data-i18n="attire_note">Kindly keep it modest</p>
                         </div>
                         <div class="attire-block">
                             <h4 class="attire-gender script-font" data-i18n="attire_ladies">Ladies</h4>
@@ -332,13 +333,13 @@
                     share more...</p>
 
                 <div class="registry-tabs">
-                    <button class="tab-btn active" data-tab="registry-gift" data-i18n="tab_gift">Gift Registry</button>
-                    <button class="tab-btn" data-tab="registry-cash" data-i18n="tab_cash">Cash Transfer</button>
+                    <button class="tab-btn" data-tab="registry-gift" data-i18n="tab_gift">Gift Registry</button>
+                    <button class="tab-btn active" data-tab="registry-cash" data-i18n="tab_cash">Cash Transfer</button>
                 </div>
 
                 <div class="registry-content">
                     <!-- Gift Registry Tab -->
-                    <div id="registry-gift" class="tab-pane active">
+                    <div id="registry-gift" class="tab-pane hidden">
                         <form id="gift-form">
                             <div class="form-group">
                                 <label for="gift-item" data-i18n="label_gift">Choose an Item</label>
@@ -366,16 +367,34 @@
                         <div id="gift-success" class="thank-you-message hidden">
                             <h3 data-i18n="gift_success_header">THANK YOU</h3>
                             <p data-i18n="gift_success_msg">Your gift has been recorded. We really appreciate it!</p>
+
+                            <!-- Destination & Link -->
+                            <div class="gift-shipping-info" style="margin-top: 20px;">
+                                <p style="font-weight: bold; margin-bottom: 5px;">Send to:</p>
+                                <p style="margin-bottom: 10px;">Cibubur, Legenda Wisata</p>
+                                <a href="https://maps.app.goo.gl/MAw74ueY3S39UQkRA" target="_blank"
+                                    class="btn-outline btn-small" style="text-decoration: none;">
+                                    <i class="fas fa-map-marker-alt"></i> Open Google Maps
+                                </a>
+                            </div>
+
+                            <div id="gift-product-recommendation" class="hidden" style="margin-top: 20px;">
+                                <p style="margin-bottom: 5px; font-size: 0.9rem;">Recommended Store:</p>
+                                <a id="gift-product-link" href="#" target="_blank" class="btn-primary btn-small"
+                                    style="text-decoration: none;">
+                                    Buy Item Here
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Cash Transfer Tab -->
-                    <div id="registry-cash" class="tab-pane hidden">
+                    <div id="registry-cash" class="tab-pane active">
                         <div class="bank-list">
                             <!-- Blu BCA Digital -->
                             <div class="bank-card">
                                 <p class="bank-name">BLU BCA DIGITAL</p>
-                                <p class="account-number" data-copy="000353049414">0003-5304-9414</p>
+                                <p class="account-number" data-copy="000353049414">000353049414</p>
                                 <p class="account-name">Dara Afiifah M</p>
                                 <button class="btn-outline btn-small copy-btn" data-target="000353049414">Copy</button>
                             </div>
@@ -383,7 +402,7 @@
                             <!-- BSI -->
                             <div class="bank-card">
                                 <p class="bank-name">BSI</p>
-                                <p class="account-number" data-copy="7222802948">7222-8029-48</p>
+                                <p class="account-number" data-copy="7222802948">7222802948</p>
                                 <p class="account-name">Dara Afiifah M</p>
                                 <button class="btn-outline btn-small copy-btn" data-target="7222802948">Copy</button>
                             </div>
@@ -391,7 +410,7 @@
                             <!-- BCA -->
                             <div class="bank-card">
                                 <p class="bank-name">BCA</p>
-                                <p class="account-number" data-copy="0860568861">0860-5688-61</p>
+                                <p class="account-number" data-copy="0860568861">0860568861</p>
                                 <p class="account-name">Dara Afiifah M</p>
                                 <button class="btn-outline btn-small copy-btn" data-target="0860568861">Copy</button>
                             </div>
@@ -399,7 +418,7 @@
                             <!-- Mandiri -->
                             <div class="bank-card">
                                 <p class="bank-name">MANDIRI</p>
-                                <p class="account-number" data-copy="1190011552955">1190-0115-5295-5</p>
+                                <p class="account-number" data-copy="1190011552955">1190011552955</p>
                                 <p class="account-name">Dara Afiifah M</p>
                                 <button class="btn-outline btn-small copy-btn" data-target="1190011552955">Copy</button>
                             </div>

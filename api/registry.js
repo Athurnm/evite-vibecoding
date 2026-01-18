@@ -24,7 +24,10 @@ export default async function handler(req, res) {
 
                 // Include if NOT purchased
                 if (name && !isPurchased) {
-                    acc.push({ item: name });
+                    acc.push({
+                        item: name,
+                        link: row.get('Link to purchase')
+                    });
                 }
                 return acc;
             }, []);
