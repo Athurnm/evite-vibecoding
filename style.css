@@ -184,7 +184,7 @@ h4 {
 
 /* Main Content */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 main:not(.hidden) {
@@ -794,9 +794,150 @@ a.btn-secondary {
     margin: 0 auto;
 }
 
-/* Ensure hidden overrides flex */
-.thank-you-message.hidden {
-    display: none !important;
+/* Gift Registry Section */
+.registry-subtitle {
+    margin-bottom: var(--spacing-lg);
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--color-warm-taupe);
+}
+
+.registry-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid var(--color-warm-taupe);
+    padding: 10px 20px;
+    font-family: var(--font-heading);
+    color: var(--color-warm-taupe);
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 4px;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background-color: var(--color-warm-taupe);
+    color: #fff;
+}
+
+.tab-pane {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-pane.hidden {
+    display: none;
+}
+
+.registry-content {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--color-bone-ivory);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Bank Details Grid */
+.bank-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 600px) {
+    .bank-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.bank-card {
+    background: #fff;
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.bank-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bank-logo {
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.bank-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-dark-taupe);
+    margin-bottom: 5px;
+}
+
+.account-number {
+    font-family: monospace;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin: 10px 0;
+    color: var(--color-text-dark);
+    font-weight: 700;
+}
+
+.account-name {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.btn-small {
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.transfer-instruction {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(37, 211, 102, 0.4);
+}
+
+.icon-wa {
+    fill: currentColor;
 }
 
 .rsvp-success-header {

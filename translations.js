@@ -90,7 +90,22 @@ export const translations = {
         "wishes_title": "Warm Wishes",
         "loading_wishes": "Loading wishes...",
         "footer_thank_you": "Thank You",
-        "footer_credit": "Built with ❤️ by <a href=\"https://github.com/Athurnm\" target=\"_blank\" class=\"credit-link\">athurnm</a> for Dara & Me"
+        "footer_credit": "Built with ❤️ by <a href=\"https://github.com/Athurnm\" target=\"_blank\" class=\"credit-link\">athurnm</a> for Dara & Me",
+        "registry_title": "Wedding Gift",
+        "registry_subtitle": "Your blessing is enough, but if you wish to share more, we have prepared a gift registry and bank transfer option suitable for you.",
+        "tab_gift": "Gift Registry",
+        "tab_cash": "Cash Transfer",
+        "label_gift": "Choose an Item",
+        "select_gift_placeholder": "Select a gift...",
+        "option_other": "Other (I'll choose my own...)",
+        "label_gift_custom": "Item Name",
+        "label_from": "From",
+        "btn_send_gift": "Send Gift",
+        "gift_success_header": "THANK YOU",
+        "gift_success_msg": "Your gift has been recorded. We really appreciate it!",
+        "btn_copy": "Copy",
+        "transfer_instruction": "After transferring, please let us know:",
+        "btn_confirm_wa": "Share to Bride"
     },
     id: {
         "title": "The Wedding of",
@@ -183,6 +198,21 @@ export const translations = {
         "wishes_title": "Ucapan Hangat",
         "loading_wishes": "Memuat ucapan...",
         "footer_thank_you": "Terima Kasih",
-        "footer_credit": "Dibuat dengan ❤️ oleh <a href=\"https://github.com/Athurnm\" target=\"_blank\" class=\"credit-link\">athurnm</a> untuk Dara & Saya"
+        "footer_credit": "Dibuat dengan ❤️ oleh <a href=\"https://github.com/Athurnm\" target=\"_blank\" class=\"credit-link\">athurnm</a> untuk Dara & Saya",
+        "registry_title": "Kado Pernikahan",
+        "registry_subtitle": "Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda ingin memberi lebih, kami menyediakan opsi Kado & Transfer Bank.",
+        "tab_gift": "Kado Fisik",
+        "tab_cash": "Transfer Tunai",
+        "label_gift": "Pilih Kado",
+        "select_gift_placeholder": "Pilih kado...",
+        "option_other": "Lainnya (Saya pilih sendiri...)",
+        "label_gift_custom": "Nama Barang",
+        "label_from": "Dari",
+        "btn_send_gift": "Kirim Kado",
+        "gift_success_header": "TERIMA KASIH",
+        "gift_success_msg": "Kado Anda telah tercatat. Kami sangat menghargainya!",
+        "btn_copy": "Salin",
+        "transfer_instruction": "Setelah transfer, mohon konfirmasi:",
+        "btn_confirm_wa": "Konfirmasi ke Pengantin"
     }
 };

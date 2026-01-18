@@ -410,4 +410,141 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         document.body.addEventListener('click', unlockAudio);
     }
+
+    // 12. Gift Registry Logic
+    const registryTabs = document.querySelectorAll('.tab-btn');
+    const registryPanes = document.querySelectorAll('.tab-pane');
+
+    registryTabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Deactivate all
+            registryTabs.forEach(b => b.classList.remove('active'));
+            registryPanes.forEach(p => p.classList.add('hidden'));
+            registryPanes.forEach(p => p.classList.remove('active'));
+
+            // Activate clicked
+            btn.classList.add('active');
+            const targetId = btn.dataset.tab;
+            const targetPane = document.getElementById(targetId);
+            targetPane.classList.remove('hidden');
+            setTimeout(() => targetPane.classList.add('active'), 50); // slight delay for fade
+        });
+    });
+
+    const giftItemSelect = document.getElementById('gift-item');
+    const otherGiftContainer = document.getElementById('other-gift-container');
+    const otherGiftInput = document.getElementById('gift-custom-name');
+
+    if (giftItemSelect) {
+        giftItemSelect.addEventListener('change', () => {
+            if (giftItemSelect.value === 'other') {
+                otherGiftContainer.classList.remove('hidden');
+                otherGiftInput.setAttribute('required', 'true');
+            } else {
+                otherGiftContainer.classList.add('hidden');
+                otherGiftInput.removeAttribute('required');
+            }
+        });
+
+        // Load Gifts from API
+        loadGifts();
+
+        // 13. Auto-fill "From" in Gift Registry
+        // Using existing `guestName` variable which is decoded from URL
+        // However, `guestName` might be "Bapak/Ibu..." default if not found.
+        // We only pre-fill if it's a specific name.
+        const giftSenderInput = document.getElementById('gift-sender');
+        const rawName = params.get('guest') || params.get('to');
+        if (giftSenderInput && rawName) {
+            giftSenderInput.value = decodeURIComponent(rawName);
+        }
+    }
+
+    async function loadGifts() {
+        try {
+            const res = await fetch('/api/registry');
+            if (res.ok) {
+                const gifts = await res.json();
+                gifts.forEach(giftObject => {
+                    const giftName = giftObject.item;
+                    if (giftName) {
+                        const option = document.createElement('option');
+                        option.value = giftName;
+                        option.textContent = giftName;
+
+                        // Insert before "Other"
+                        const otherOption = giftItemSelect.querySelector('option[value="other"]');
+                        giftItemSelect.insertBefore(option, otherOption);
+                    }
+                });
+            }
+        } catch (e) {
+            console.error("Failed to load registry", e);
+        }
+    }
+
+    const giftForm = document.getElementById('gift-form');
+    if (giftForm) {
+        giftForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = giftForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(giftForm);
+            let item = formData.get('item');
+            if (item === 'other') {
+                item = formData.get('custom_item');
+            }
+            const sender = formData.get('sender');
+
+            try {
+                const res = await fetch('/api/registry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ item, sender })
+                });
+
+                if (res.ok) {
+                    giftForm.classList.add('hidden');
+                    document.getElementById('gift-success').classList.remove('hidden');
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch (err) {
+                alert('Failed to send gift. Please try again.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // Copy Bank Account
+    // Copy Bank Account
+    const copyBtns = document.querySelectorAll('.copy-btn');
+    copyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetNumber = btn.dataset.target;
+            if (targetNumber) {
+                navigator.clipboard.writeText(targetNumber).then(() => {
+                    const original = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = original, 2000);
+                });
+            }
+        });
+    });
+
+    // Share to WA
+    const shareWaBtn = document.getElementById('share-transfer');
+    if (shareWaBtn) {
+        shareWaBtn.addEventListener('click', () => {
+            // REPLACE WITH BRIDE'S NUMBER
+            const phone = "628111700405";
+
+            const message = encodeURIComponent("Halo Dara, saya sudah transfer hadiah pernikahan untuk Athur & Dara. Berikut buktinya:");
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        });
+    }
 });

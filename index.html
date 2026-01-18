@@ -227,8 +227,8 @@
 
                 <!-- Success Message Container -->
                 <div id="rsvp-success" class="thank-you-message hidden">
-                    <h3 class="rsvp-success-header">TERIMA KASIH</h3>
-                    <p class="rsvp-success-msg">
+                    <h3 class="rsvp-success-header" data-i18n="thank_you_header">TERIMA KASIH</h3>
+                    <p class="rsvp-success-msg" data-i18n="thank_you_msg">
                         Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir
                         di hari bahagia kami.
                     </p>
@@ -321,6 +321,100 @@
                             <span class="wish-author"></span>
                         </div>
                         <button id="next-wish" class="nav-btn">&gt;</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gift Registry -->
+            <section id="gift-registry" class="registry section fade-in">
+                <h2 class="section-title" data-i18n="registry_title">Wedding Gift</h2>
+                <p class="registry-subtitle" data-i18n="registry_subtitle">Your blessing is enough, but if you wish to
+                    share more...</p>
+
+                <div class="registry-tabs">
+                    <button class="tab-btn active" data-tab="registry-gift" data-i18n="tab_gift">Gift Registry</button>
+                    <button class="tab-btn" data-tab="registry-cash" data-i18n="tab_cash">Cash Transfer</button>
+                </div>
+
+                <div class="registry-content">
+                    <!-- Gift Registry Tab -->
+                    <div id="registry-gift" class="tab-pane active">
+                        <form id="gift-form">
+                            <div class="form-group">
+                                <label for="gift-item" data-i18n="label_gift">Choose an Item</label>
+                                <select id="gift-item" name="item" required>
+                                    <option value="" disabled selected data-i18n="select_gift_placeholder">Select a
+                                        gift...</option>
+                                    <!-- Options injected via JS -->
+                                    <option value="other" data-i18n="option_other">Other (I'll choose my own)</option>
+                                </select>
+                            </div>
+
+                            <div id="other-gift-container" class="form-group hidden">
+                                <label for="gift-custom-name" data-i18n="label_gift_custom">Item Name</label>
+                                <input type="text" id="gift-custom-name" name="custom_item"
+                                    placeholder="E.g. Coffee Maker">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gift-sender" data-i18n="label_from">From</label>
+                                <input type="text" id="gift-sender" name="sender" required placeholder="Your Name">
+                            </div>
+
+                            <button type="submit" class="btn-primary" data-i18n="btn_send_gift">Send Gift</button>
+                        </form>
+                        <div id="gift-success" class="thank-you-message hidden">
+                            <h3 data-i18n="gift_success_header">THANK YOU</h3>
+                            <p data-i18n="gift_success_msg">Your gift has been recorded. We really appreciate it!</p>
+                        </div>
+                    </div>
+
+                    <!-- Cash Transfer Tab -->
+                    <div id="registry-cash" class="tab-pane hidden">
+                        <div class="bank-list">
+                            <!-- Blu BCA Digital -->
+                            <div class="bank-card">
+                                <p class="bank-name">BLU BCA DIGITAL</p>
+                                <p class="account-number" data-copy="000353049414">0003-5304-9414</p>
+                                <p class="account-name">Dara Afiifah M</p>
+                                <button class="btn-outline btn-small copy-btn" data-target="000353049414">Copy</button>
+                            </div>
+
+                            <!-- BSI -->
+                            <div class="bank-card">
+                                <p class="bank-name">BSI</p>
+                                <p class="account-number" data-copy="7222802948">7222-8029-48</p>
+                                <p class="account-name">Dara Afiifah M</p>
+                                <button class="btn-outline btn-small copy-btn" data-target="7222802948">Copy</button>
+                            </div>
+
+                            <!-- BCA -->
+                            <div class="bank-card">
+                                <p class="bank-name">BCA</p>
+                                <p class="account-number" data-copy="0860568861">0860-5688-61</p>
+                                <p class="account-name">Dara Afiifah M</p>
+                                <button class="btn-outline btn-small copy-btn" data-target="0860568861">Copy</button>
+                            </div>
+
+                            <!-- Mandiri -->
+                            <div class="bank-card">
+                                <p class="bank-name">MANDIRI</p>
+                                <p class="account-number" data-copy="1190011552955">1190-0115-5295-5</p>
+                                <p class="account-name">Dara Afiifah M</p>
+                                <button class="btn-outline btn-small copy-btn" data-target="1190011552955">Copy</button>
+                            </div>
+                        </div>
+
+                        <p class="transfer-instruction" data-i18n="transfer_instruction">After transferring, please let
+                            us know:</p>
+                        <button id="share-transfer" class="btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor" class="icon-wa">
+                                <path
+                                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.005.572 2.173.894 3.424.894h.001c3.181 0 5.768-2.587 5.769-5.766.001-3.185-2.587-5.777-5.388-5.777zm4.336 4.966l-.16.893c-.16.903-.787 1.588-1.748 1.588-.704 0-1.42-.4-2.196-1.18-.895-.899-1.29-1.391-1.366-1.921-.064-.447.247-.693.435-.84l.217-.173c.189-.149.274-.187.352-.066l.33.518c.081.127.12.191.036.353l-.155.297c-.07.135-.147.164-.064.303.351.585.918 1.152 1.536 1.487.132.072.167-.008.293-.092l.279-.187c.148-.098.222-.05.344.015l.504.269c.123.065.158.148.158.294 0 .092-.007.126-.145.242zM12.012 2.227C6.678 2.227 2.28 6.621 2.28 11.959c0 1.832.502 3.541 1.365 5.006L2.3 22l5.059-1.332c1.398.766 2.992 1.189 4.653 1.189 5.334 0 9.731-4.394 9.731-9.732 0-5.394-4.341-9.898-9.731-9.898z" />
+                            </svg>
+                            Share to Bride
+                        </button>
                     </div>
                 </div>
             </section>
