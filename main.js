@@ -111,7 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (guestName) {
         const decodedName = decodeURIComponent(guestName);
         guestNameElement.textContent = decodedName;
-        if (nameInput) nameInput.value = decodedName; // Pre-fill RSVP
+        if (nameInput) {
+            nameInput.value = decodedName; // Pre-fill RSVP
+            nameInput.disabled = true; // Disable if provided via URL
+        }
     } else {
         guestNameElement.textContent = "Bapak/Ibu/Saudara/i";
     }
@@ -223,8 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const children = parseInt(formData.get('children'));
         const totalGuests = adults + children;
 
+        // Handle disabled name input: if disabled, formData won't have it, so grab from DOM
+        let nameVal = formData.get('name');
+        if (!nameVal) {
+            nameVal = document.getElementById('name').value;
+        }
+
         const data = {
-            name: formData.get('name'),
+            name: nameVal,
             guests: totalGuests, // Saving total count as well
             adults: adults,
             children: children,
@@ -410,6 +419,66 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         document.body.addEventListener('click', unlockAudio);
     }
+
+    // ---------------------------------------------------------
+    // NEW: Persistent State Logic (RSVP & Registry)
+    // ---------------------------------------------------------
+    async function initializeState() {
+        const guestNameVal = params.get('guest') || params.get('to');
+        if (!guestNameVal) return;
+
+        try {
+            const res = await fetch(`/api/state?name=${guestNameVal}`);
+            if (res.ok) {
+                const state = await res.json();
+
+                // 1. Restore RSVP State
+                if (state.rsvp) {
+                    const rsvp = state.rsvp;
+                    // Pre-fill fields
+                    if (document.getElementById('name')) document.getElementById('name').value = rsvp.name;
+                    if (document.getElementById('attendance')) document.getElementById('attendance').value = rsvp.attendance;
+                    if (document.getElementById('wishes')) document.getElementById('wishes').value = rsvp.wishes;
+
+                    // Handle dropdowns (adults/children)
+                    // We might need to ensure options exist first, but populateDropdown is called locally.
+                    // If stored value > current max, it might be an issue, but usually it's fine.
+                    if (document.getElementById('adults')) document.getElementById('adults').value = rsvp.adults;
+                    if (document.getElementById('children')) document.getElementById('children').value = rsvp.children;
+
+                    // Update UI to show "Update" mode
+                    const rsvpBtn = document.querySelector('#rsvp-form button[type="submit"]');
+                    if (rsvpBtn) rsvpBtn.textContent = 'Update RSVP';
+                }
+
+                // 2. Restore Registry State
+                if (state.registry && state.registry.item_name) {
+                    const itemName = state.registry.item_name;
+
+                    // User Request: Show Thank You message directly instead of "Change Selection"
+                    const giftForm = document.getElementById('gift-form');
+                    const successMsg = document.getElementById('gift-success');
+
+                    if (giftForm && successMsg) {
+                        giftForm.classList.add('hidden');
+                        successMsg.classList.remove('hidden');
+
+                        // Optional: Update success message to mention item?
+                        // successMsg.querySelector('p').textContent = `You have selected: ${itemName}. Thank you!`;
+
+                        // Attempt to resolve link (best effort)
+                        // logic relies on loadGifts having populated options, which might race.
+                        // But we can try to fetch registry again or just accept link might be missing on reload.
+                    }
+                }
+            }
+        } catch (e) {
+            console.error("Error fetching state:", e);
+        }
+    }
+
+    // Call it
+    initializeState();
 
     // 12. Gift Registry Logic
     const registryTabs = document.querySelectorAll('.tab-btn');

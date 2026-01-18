@@ -7,14 +7,9 @@ export default async function handler(request, response) {
 
     try {
         const pool = getPool();
-        const query = `
-        SELECT name, wishes 
-        FROM rsvp 
-        WHERE wishes IS NOT NULL AND wishes != '' 
-        ORDER BY timestamp DESC 
-        LIMIT 20
-    `;
-        const result = await pool.query(query);
+        // Fetch valid wishes from the new persistent table
+        const result = await pool.query('SELECT name, wishes FROM rsvp_submissions WHERE wishes IS NOT NULL AND wishes != \'\' ORDER BY updated_at DESC LIMIT 20');
+
         return response.status(200).json(result.rows);
     } catch (error) {
         return response.status(500).json({ error: error.message });

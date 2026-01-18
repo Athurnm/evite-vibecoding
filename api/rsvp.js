@@ -18,11 +18,24 @@ export default async function handler(request, response) {
         }
 
         try {
+            // Upsert into rsvp_submissions (State)
             const query = `
-        INSERT INTO rsvp (name, guests, adults, children, attendance, wishes)
-        VALUES ($1, $2, $3, $4, $5, $6)
-      `;
+                INSERT INTO rsvp_submissions (name, guests, adults, children, attendance, wishes, updated_at)
+                VALUES ($1, $2, $3, $4, $5, $6, NOW())
+                ON CONFLICT (name) 
+                DO UPDATE SET 
+                    guests = EXCLUDED.guests,
+                    adults = EXCLUDED.adults,
+                    children = EXCLUDED.children,
+                    attendance = EXCLUDED.attendance,
+                    wishes = EXCLUDED.wishes,
+                    updated_at = NOW();
+            `;
             await pool.query(query, [name, guests, adults, children, attendance, wishes]);
+
+            // Optional: Also insert into historical 'rsvp' table if you want to keep a log of every click
+            // But for now, let's focus on the new requirement.
+
             return response.status(200).json({ message: 'RSVP submitted successfully' });
         } catch (error) {
             return response.status(500).json({ error: error.message });
