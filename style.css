@@ -594,9 +594,9 @@ a.btn-secondary {
 }
 
 .event-schedule-container {
-    background-color: rgba(168, 159, 145, 0.7);
-    /* Lighter Taupe with transparency */
-    backdrop-filter: blur(4px);
+    background-color: rgba(93, 83, 72, 0.85);
+    /* Darker Taupe/Brown with 85% opacity */
+    backdrop-filter: blur(8px);
     border-radius: 30px;
     padding: var(--spacing-xl) var(--spacing-md);
     padding-bottom: 6rem;
@@ -748,6 +748,20 @@ a.btn-secondary {
     color: var(--color-bone-ivory);
     margin-bottom: var(--spacing-sm);
 }
+
+/* --- Readability overrides for Event Details --- */
+
+/* Force Sans-Serif */
+.event-schedule-container h2,
+.event-schedule-container h3,
+.event-schedule-container p,
+.event-schedule-container a,
+.event-schedule-container button {
+    font-family: var(--font-body) !important;
+}
+
+/* Font Sizing scale-up (Min 16pt ~= 1.35rem) - REVERTED */
+/* Keeping the section, but removing overrides to fallback to original sizes */
 
 /* Override dark text inside the container */
 .event-schedule-container .section-title,
