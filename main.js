@@ -1,5 +1,19 @@
 import './style.css'
 import { translations } from './translations.js';
+import posthog from 'posthog-js';
+
+// Initialize PostHog
+const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY;
+const POSTHOG_HOST = import.meta.env.VITE_POSTHOG_HOST;
+
+if (POSTHOG_KEY) {
+    posthog.init(POSTHOG_KEY, {
+        api_host: POSTHOG_HOST || 'https://us.i.posthog.com',
+        person_profiles: 'identified_only',
+        capture_pageview: true
+    });
+    posthog.register({ product: 'e-vite' });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Language Toggle Logic
@@ -262,6 +276,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 successMsg.classList.add('fade-in', 'visible');
 
                 loadWishes(); // Refresh wishes
+
+                // Track RSVP
+                posthog.capture('rsvp_submitted', {
+                    attendance: formData.get('attendance'),
+                    guests: totalGuests,
+                    adults: adults,
+                    children: children
+                });
             } else {
                 throw new Error('Failed to submit');
             }
@@ -497,6 +519,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetPane = document.getElementById(targetId);
             targetPane.classList.remove('hidden');
             setTimeout(() => targetPane.classList.add('active'), 50); // slight delay for fade
+
+            // Track Registry View
+            posthog.capture('registry_viewed', { tab: targetId });
         });
     });
 
@@ -642,6 +667,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Get selected option from the dropdown
                     const selectElement = document.getElementById('gift-item');
                     const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                    // Track Gift
+                    posthog.capture('registry_submitted', {
+                        item: item,
+                        type: selectedOption?.dataset?.link ? 'product_link' : 'custom_cash'
+                    });
 
                     if (selectedOption && selectedOption.dataset.link) {
                         productLinkArea.classList.remove('hidden');
