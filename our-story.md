@@ -20,7 +20,7 @@ The families met, the question was popped (officially), and we bridged our two w
 
 And here we are. Ready to start our biggest adventure yet
 
-# Design References
+## Design References
 
 - Visual Flow: Use a vertical line connecting these dots as the user scrolls down.
 
