@@ -1,8 +1,8 @@
 # 💍 Wedding Brand Guidelines: Athur & Dara
 
-**Date:** [Insert Date]  
-**Venue:** Steikhaus, Bandung (Indoor & Semi-Outdoor)  
-**Time:** 08:00 - 14:00 (Morning - Afternoon Light)  
+**Date:** Saturday, March 28th, 2026
+**Venue:** Steikhaus, Bandung (Indoor & Semi-Outdoor)
+**Time:** 08:00 - 13:00 (Akad: 08:00-10:00, Resepsi: 11:00-13:00)  
 **Theme:** Modern Minimalist, White-on-White, Earthy Accents.
 
 ---
@@ -27,7 +27,7 @@ The palette is 80% White/Neutral to maximize the natural light in the venue, wit
 | **Primary** | **Paper White** | `#FFFFFF` | Drapes, Main Flowers, Backdrop Base, Stationery Background. |
 | **Secondary** | **Bone / Ivory** | `#F5F5F0` | Fabric Runners, Secondary Flowers, Softening transitions. |
 | **Accent 1** | **Warm Taupe** | `#A89F91` | **The Earth Tone Accent.** Typography, ribbons, napkins, small structural details. |
-| **Accent 2** | **Muted Blush** | `#E5D0CC` | *Very subtle* hints in floral centers or Groom's accessories (Reference to Athur's attire). |
+| **Accent 2** | **Muted Blush** | `#E5D0CC` | *Very subtle* hints in floral centers or Groom's family attire. |
 | **Text** | **Text Dark** | `#4A4A4A` | Main body text for readability. |
 | **Dark Accent** | **Dark Taupe** | `#8E8070` | Headers in attire section, stronger contrast elements. |
 
@@ -99,16 +99,21 @@ We need a font pairing that screams "Modern" but remains romantic.
 
 ## 6. Web UI System (Digital Experience)
 
+### **A. Audio Experience**
+
+* **Track:** "Love Wins All" by IU (Classic Cover).
+* **Vibe:** Emotional, instrumental, building up slowly. Matches the "Ethereal" concept.
+
 The invitation website reflects the "Ethereal Earth" concept through glassmorphism, clean typography, and subtle interactions.
 
-### **A. Buttons & Interactions**
+### **B. Buttons & Interactions**
 
 * **Primary Button:** **Warm Taupe** background, White text. Caps lock, wide letter spacing.
 * **Secondary Button:** **Bone/Ivory** background, Taupe text. Used for "Get Directions" or secondary actions.
 * **Outline Button:** Transparent background, **Warm Taupe** border. Minimalist look.
 * **Pulse Animation:** Used on the main "Open Invitation" button to encourage interaction.
 
-### **B. Containers & Cards**
+### **C. Containers & Cards**
 
 * **Form Inputs:** Minimalist. Transparent background with only a **Warm Taupe** bottom border. Highlight color is **Muted Blush**.
 * **Event Schedule:** Uses a **Glassmorphism** effect.
@@ -116,7 +121,7 @@ The invitation website reflects the "Ethereal Earth" concept through glassmorphi
   * Backdrop Filter: `blur(8px)`.
   * Text: **Bone/Ivory** for contrast against the dark glass.
 
-### **C. Layout Principles**
+### **D. Layout Principles**
 
 * **Whitespace:** Extensive usage of negative space to mimic the "Airy" floral arrangement style.
 * **Responsive:** Stacked layouts on mobile, side-by-side on desktop (Story section).
@@ -126,14 +131,24 @@ The invitation website reflects the "Ethereal Earth" concept through glassmorphi
 
 ## 7. Attire Harmony
 
-* **Dara (Bride):**
-  * Pure White or Off-White Syar'i Dress.
-  * Material: Matte Satin or Crepe (Avoid shiny satin).
-  * No heavy beading/color. Clean lines.
-* **Athur (Groom):**
-  * Suit: **Light Beige / Sand** (Matches the secondary color).
-  * Shirt: **Soft Pink** (Dara's request) or White.
-  * Tie/Pocket Square: **Warm Taupe** (Matches the accent color).
+### **A. Bride & Groom**
+
+* **Akad (Ceremony):**
+  * **Dara:** White Syar'i simple dress.
+  * **Athur:** White Melayu suit.
+* **Resepsi (Reception):**
+  * **Dara:** Maroon color wedding dress.
+  * **Athur:** Maroon color suit.
+
+### **B. Family & Guests**
+
+* **Bride's Family:** Champagne spectrum colors (Light shade to Dark shade).
+* **Groom's Family:** Dusty Pink spectrum colors (Light shade to Dark shade).
+  * *Note:* Avoid colors light enough to be similar with White.
+* **Guests:**
+  * Please refer to the Color Palette in the Web App (Earth Tones, Sage Green, Dove Grey, etc.).
+  * **Strict Rule:** Please kindly avoid **White** & **Maroon** attire (Reserved for Bride & Groom).
+  * **No T-shirts.**
 
 ---
 
