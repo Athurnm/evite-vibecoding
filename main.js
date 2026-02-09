@@ -12,7 +12,7 @@ if (POSTHOG_KEY) {
         person_profiles: 'identified_only',
         capture_pageview: true
     });
-    posthog.register({ product: 'e-vite' });
+    posthog.register({ product: 'evite-athur' });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -278,6 +278,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadWishes(); // Refresh wishes
 
                 // Track RSVP
+                if (data.name) {
+                    posthog.identify(data.name);
+                }
                 posthog.capture('rsvp_submitted', {
                     attendance: formData.get('attendance'),
                     guests: totalGuests,
