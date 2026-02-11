@@ -34,8 +34,8 @@
         <!-- Cover Section -->
         <header id="cover" class="cover">
             <!-- Decorations -->
-            <img src="/assets/floral_corner.png" class="corner-decoration top-right">
-            <img src="/assets/floral_corner.png" class="corner-decoration bottom-left">
+            <img src="/assets/floral_corner.png" class="corner-decoration top-right" alt="Floral corner decoration">
+            <img src="/assets/floral_corner.png" class="corner-decoration bottom-left" alt="Floral corner decoration">
 
             <!-- Language Toggle (Moved here for fixed positioning or absolute over cover, but plan says fixed) -->
             <!-- We'll place it directly in #app or body if we want it fixed viewport-wide -->
@@ -167,7 +167,8 @@
                                 <p class="venue-name">STEIKHAUS, BANDUNG</p>
                                 <p class="venue-address" data-i18n="akad_venue">(Indoor & Semi-Outdoor)</p>
                             </div>
-                            <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
+                            <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map"
+                                rel="noopener noreferrer">Google
                                 Maps</a>
                         </div>
 
@@ -179,7 +180,8 @@
                                 <p class="venue-name">STEIKHAUS, BANDUNG</p>
                                 <p class="venue-address" data-i18n="resepsi_venue">(Indoor & Semi-Outdoor)</p>
                             </div>
-                            <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map">Google
+                            <a href="https://maps.app.goo.gl/5612AbGbo95dsra4A" target="_blank" class="btn-map"
+                                rel="noopener noreferrer">Google
                                 Maps</a>
                         </div>
                     </div>
@@ -263,20 +265,28 @@
                         <p class="palette-title" data-i18n="palette_title">Color Palette</p>
                         <div class="palette-circles">
                             <div class="palette-item">
-                                <span class="color-circle" style="background-color: #999999;"></span>
-                                <span class="color-name">Dove Grey</span>
-                            </div>
-                            <div class="palette-item">
-                                <span class="color-circle" style="background-color: #8A9A5B;"></span>
+                                <span class="color-circle bg-sage-green"></span>
                                 <span class="color-name">Sage Green</span>
                             </div>
                             <div class="palette-item">
-                                <span class="color-circle" style="background-color: #647C90;"></span>
-                                <span class="color-name">Dusty Blue / Steel Blue</span>
+                                <span class="color-circle bg-deep-walnut"></span>
+                                <span class="color-name">Deep Walnut</span>
                             </div>
                             <div class="palette-item">
-                                <span class="color-circle" style="background-color: #5E6240;"></span>
+                                <span class="color-circle bg-terracotta"></span>
+                                <span class="color-name">Terracotta</span>
+                            </div>
+                            <div class="palette-item">
+                                <span class="color-circle bg-dusty-blue"></span>
+                                <span class="color-name">Dusty Blue</span>
+                            </div>
+                            <div class="palette-item">
+                                <span class="color-circle bg-olive-green"></span>
                                 <span class="color-name">Olive Green</span>
+                            </div>
+                            <div class="palette-item">
+                                <span class="color-circle bg-dove-grey"></span>
+                                <span class="color-name">Dove Grey</span>
                             </div>
                         </div>
                     </div>
@@ -370,19 +380,19 @@
                             <p data-i18n="gift_success_msg">Your gift has been recorded. We really appreciate it!</p>
 
                             <!-- Destination & Link -->
-                            <div class="gift-shipping-info" style="margin-top: 20px;">
-                                <p style="font-weight: bold; margin-bottom: 5px;">Send to:</p>
-                                <p style="margin-bottom: 10px;">Cibubur, Legenda Wisata</p>
+                            <div class="gift-shipping-info">
+                                <p class="gift-shipping-label">Send to:</p>
+                                <p class="gift-shipping-address">Cibubur, Legenda Wisata</p>
                                 <a href="https://maps.app.goo.gl/MAw74ueY3S39UQkRA" target="_blank"
-                                    class="btn-outline btn-small" style="text-decoration: none;">
+                                    class="btn-outline btn-small gift-map-link" rel="noopener noreferrer">
                                     <i class="fas fa-map-marker-alt"></i> Open Google Maps
                                 </a>
                             </div>
 
-                            <div id="gift-product-recommendation" class="hidden" style="margin-top: 20px;">
-                                <p style="margin-bottom: 5px; font-size: 0.9rem;">Recommended Store:</p>
-                                <a id="gift-product-link" href="#" target="_blank" class="btn-primary btn-small"
-                                    style="text-decoration: none;">
+                            <div id="gift-product-recommendation" class="hidden gift-product-recommendation">
+                                <p class="gift-product-label">Recommended Store:</p>
+                                <a id="gift-product-link" href="#" target="_blank"
+                                    class="btn-primary btn-small gift-product-link" rel="noopener noreferrer">
                                     Buy Item Here
                                 </a>
                             </div>
@@ -445,7 +455,7 @@
                 <p data-i18n="footer_thank_you">Thank You</p>
                 <div class="credit">
                     <p data-i18n="footer_credit">Built with ❤️ by <a href="https://github.com/Athurnm" target="_blank"
-                            class="credit-link">athurnm</a> for Dara & Me</p>
+                            class="credit-link" rel="noopener noreferrer">athurnm</a> for Dara & Me</p>
                 </div>
             </footer>
         </main>

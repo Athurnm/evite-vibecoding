@@ -1,18 +1,49 @@
 :root {
-    /* Ethereal Earth Palette */
-    --color-paper-white: #FFFFFF;
-    --color-bone-ivory: #F5F5F0;
+    /* Updated Palette: Maroon Romance & Earth */
+
+    /* Hero & Primary Colors */
+    --color-deep-maroon: #800020;
+    /* Bride & Groom attire, primary CTAs */
+    --color-warm-ivory: #F8F6F0;
+    /* Main background, drapes, backdrop */
+    --color-champagne: #F7E7CE;
+    /* Bride's family, secondary backgrounds */
+
+    /* Accent Colors */
+    --color-terracotta-blush: #D4A5A5;
+    /* Floral accents, hover states */
     --color-warm-taupe: #A89F91;
-    --color-muted-blush: #E5D0CC;
-    --color-text-dark: #4A4A4A;
+    /* Structural details, borders */
+    --color-dusty-rose: #C9A9A6;
+    /* Groom's family, romantic accents */
+
+    /* Supporting Earth Tones */
+    --color-warm-sand: #E8DCC4;
+    /* Table settings, natural textures */
+    --color-sage-mist: #B8C5B0;
+    /* Minimal foliage accent */
+    --color-natural-oak: #C19A6B;
+    /* Wood tone complement */
+
+    /* Text Colors */
+    --color-text-primary: #4A3F35;
+    /* Charcoal Brown - main text */
+    --color-text-accent: #6B4C4C;
+    /* Burgundy Brown - headers */
+    --color-text-light: #999999;
+    /* Subtle text, placeholders */
+
+    /* Legacy Support (gradual migration) */
+    --color-paper-white: var(--color-warm-ivory);
+    --color-bone-ivory: var(--color-champagne);
+    --color-muted-blush: var(--color-terracotta-blush);
+    --color-text-dark: var(--color-text-primary);
+    --color-dark-taupe: var(--color-text-accent);
 
     /* Typography */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
     --font-accent: 'Pinyon Script', cursive;
-
-    /* Darker Shade for Attire Headers */
-    --color-dark-taupe: #8E8070;
 
     /* Spacing */
     --spacing-sm: 0.5rem;
@@ -29,8 +60,8 @@
 
 body {
     font-family: var(--font-body);
-    background-color: var(--color-paper-white);
-    color: var(--color-text-dark);
+    background-color: var(--color-warm-ivory);
+    color: var(--color-text-primary);
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -41,7 +72,7 @@ h3,
 h4 {
     font-family: var(--font-heading);
     font-weight: 400;
-    color: var(--color-warm-taupe);
+    color: var(--color-text-accent);
 }
 
 .script-font {
@@ -55,7 +86,7 @@ h4 {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--color-paper-white);
+    background-color: var(--color-warm-ivory);
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -111,20 +142,24 @@ h4 {
 }
 
 .btn-open {
-    background: transparent;
-    border: 1px solid var(--color-warm-taupe);
-    padding: 10px 30px;
+    background: var(--color-deep-maroon);
+    border: 2px solid var(--color-deep-maroon);
+    padding: 12px 36px;
     font-family: var(--font-heading);
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--color-warm-taupe);
+    color: var(--color-warm-ivory);
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.2);
 }
 
 .btn-open:hover {
-    background-color: var(--color-warm-taupe);
-    color: var(--color-paper-white);
+    background-color: #9A2A3A;
+    border-color: #9A2A3A;
+    color: var(--color-warm-ivory);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(128, 0, 32, 0.3);
 }
 
 /* Sticky Controls */
@@ -145,17 +180,16 @@ h4 {
     font-family: var(--font-body);
     font-size: 0.9rem;
     letter-spacing: 1px;
-    background-color: #A89F91;
-    /* Deep Earth */
-    backdrop-filter: blur(4px);
+    background-color: rgba(107, 76, 76, 0.9);
+    /* Burgundy Brown - romantic */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     padding: 8px 16px;
-    /* Slightly larger padding */
     border-radius: 30px;
-    /* More rounded */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    /* Prominent shadow */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Subtle highlight */
+    box-shadow: 0 4px 20px rgba(128, 0, 32, 0.25);
+    /* Maroon shadow */
+    border: 1px solid rgba(247, 231, 206, 0.2);
+    /* Champagne highlight */
 }
 
 .lang-btn {
@@ -164,17 +198,17 @@ h4 {
     cursor: pointer;
     font-family: inherit;
     font-weight: 500;
-    color: rgba(245, 245, 240, 0.6);
-    /* Inactive color */
+    color: rgba(247, 231, 206, 0.6);
+    /* Inactive champagne */
     transition: all 0.3s;
     padding: 2px 5px;
 }
 
 .lang-btn.active,
 .lang-btn:hover {
-    color: var(--color-bone-ivory);
+    color: var(--color-warm-ivory);
     font-weight: 700;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(247, 231, 206, 0.4);
 }
 
 .lang-divider {
@@ -201,7 +235,7 @@ main:not(.hidden) {
 
 .section {
     padding: var(--spacing-xl) var(--spacing-md);
-    min-height: auto;
+
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
@@ -226,11 +260,13 @@ main:not(.hidden) {
     font-size: 3rem;
     margin: var(--spacing-md) 0;
     line-height: 1.2;
+    color: var(--color-text-accent);
 }
 
 .couple-names span {
     font-size: 4rem;
-    color: var(--color-muted-blush);
+    color: var(--color-deep-maroon);
+    /* Maroon for the ampersand - romantic focal point */
 }
 
 .date {
@@ -409,15 +445,15 @@ main:not(.hidden) {
     padding: 12px 24px;
     height: 50px;
     min-width: 250px;
-    background-color: var(--color-bone-ivory);
-    color: var(--color-warm-taupe);
+    background-color: var(--color-champagne);
+    color: var(--color-text-accent);
     text-decoration: none;
     font-family: var(--font-heading);
     font-size: 1rem;
     letter-spacing: 1px;
-    border: none;
+    border: 1px solid var(--color-terracotta-blush);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
     box-sizing: border-box;
 }
 
@@ -427,8 +463,9 @@ a.btn-secondary {
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-muted-blush);
-    color: #fff;
+    background-color: var(--color-terracotta-blush);
+    color: var(--color-warm-ivory);
+    border-color: var(--color-terracotta-blush);
 }
 
 /* RSVP Form */
@@ -459,7 +496,7 @@ a.btn-secondary {
     background: transparent;
     font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--color-text-dark);
+    color: var(--color-text-primary);
     resize: vertical;
 }
 
@@ -467,24 +504,28 @@ a.btn-secondary {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-bottom: 2px solid var(--color-muted-blush);
+    border-bottom: 2px solid var(--color-terracotta-blush);
+    color: var(--color-text-accent);
 }
 
 .btn-primary {
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: var(--color-warm-taupe);
-    color: #fff;
+    background-color: var(--color-deep-maroon);
+    color: var(--color-warm-ivory);
     border: none;
     font-family: var(--font-heading);
     letter-spacing: 2px;
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.15);
 }
 
 .btn-primary:hover {
-    opacity: 0.9;
+    background-color: #9A2A3A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(128, 0, 32, 0.25);
 }
 
 /* Wishes Carousel */
@@ -507,17 +548,19 @@ a.btn-secondary {
 }
 
 .wish-card {
-    background-color: var(--color-bone-ivory);
+    background-color: var(--color-champagne);
     padding: var(--spacing-lg);
-    border-radius: 8px;
+    border-radius: 12px;
     max-width: 400px;
     min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     width: 100%;
+    border: 1px solid var(--color-terracotta-blush);
+    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.08);
 }
 
 .wish-text {
@@ -594,18 +637,21 @@ a.btn-secondary {
 }
 
 .event-schedule-container {
-    background-color: rgba(93, 83, 72, 0.85);
-    /* Darker Taupe/Brown with 85% opacity */
-    backdrop-filter: blur(8px);
+    background-color: rgba(107, 76, 76, 0.85);
+    /* Burgundy Brown with 85% opacity - romantic warmth */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border-radius: 30px;
     padding: var(--spacing-xl) var(--spacing-md);
     padding-bottom: 6rem;
     /* Extra whitespace at bottom */
     margin-top: var(--spacing-md);
     margin-bottom: var(--spacing-md);
-    border: 1px solid rgba(245, 245, 240, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    color: var(--color-bone-ivory);
+    border: 1px solid rgba(247, 231, 206, 0.2);
+    /* Champagne border */
+    box-shadow: 0 8px 24px rgba(128, 0, 32, 0.15);
+    /* Maroon shadow */
+    color: var(--color-warm-ivory);
     position: relative;
     z-index: 5;
 }
@@ -701,20 +747,21 @@ a.btn-secondary {
 
 .btn-outline {
     background: transparent;
-    border: 1px solid var(--color-warm-taupe);
+    border: 2px solid var(--color-warm-taupe);
     padding: 10px 20px;
     font-family: var(--font-heading);
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--color-warm-taupe);
+    color: var(--color-text-accent);
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
 }
 
 .btn-outline:hover {
-    background-color: var(--color-warm-taupe);
-    color: white;
+    background-color: var(--color-champagne);
+    border-color: var(--color-terracotta-blush);
+    color: var(--color-text-accent);
 }
 
 .btn-map {
@@ -872,10 +919,11 @@ a.btn-secondary {
 .registry-content {
     max-width: 500px;
     margin: 0 auto;
-    background-color: var(--color-bone-ivory);
+    background-color: var(--color-champagne);
     padding: var(--spacing-lg);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid var(--color-terracotta-blush);
+    box-shadow: 0 6px 16px rgba(128, 0, 32, 0.1);
 }
 
 /* Bank Details Grid */
@@ -893,18 +941,19 @@ a.btn-secondary {
 }
 
 .bank-card {
-    background: #fff;
+    background: var(--color-warm-ivory);
     padding: var(--spacing-md);
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid var(--color-terracotta-blush);
+    box-shadow: 0 4px 8px rgba(128, 0, 32, 0.08);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .bank-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(128, 0, 32, 0.15);
+    border-color: var(--color-deep-maroon);
 }
 
 .bank-logo {
@@ -915,7 +964,7 @@ a.btn-secondary {
 .bank-name {
     font-weight: bold;
     font-size: 1.1rem;
-    color: var(--color-dark-taupe);
+    color: var(--color-text-accent);
     margin-bottom: 5px;
 }
 
@@ -1155,8 +1204,8 @@ a.btn-secondary {
 
 .attire-gender {
     font-size: 2rem;
-    color: var(--color-dark-taupe);
-    /* Darker shade */
+    color: var(--color-terracotta-blush);
+    /* Romantic earth tone */
     margin-bottom: var(--spacing-sm);
 }
 
@@ -1211,17 +1260,17 @@ a.btn-secondary {
 @keyframes pulse-soft {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(168, 159, 145, 0.4);
+        box-shadow: 0 0 0 0 rgba(128, 0, 32, 0.4);
     }
 
     70% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(168, 159, 145, 0);
+        box-shadow: 0 0 0 12px rgba(128, 0, 32, 0);
     }
 
     100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(168, 159, 145, 0);
+        box-shadow: 0 0 0 0 rgba(128, 0, 32, 0);
     }
 }
 
@@ -1388,11 +1437,12 @@ a.btn-secondary {
 .avoid-attire {
     text-align: center;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--color-text-primary);
     margin-bottom: var(--spacing-xl);
     padding: var(--spacing-md);
-    background-color: var(--color-bone-ivory);
-    border-radius: 4px;
+    background-color: var(--color-champagne);
+    border-radius: 8px;
+    border: 1px solid var(--color-terracotta-blush);
 }
 
 /* Do`s and Dont`s */
@@ -1472,23 +1522,23 @@ a.btn-secondary {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background-color: var(--color-warm-taupe);
-    color: var(--color-paper-white);
-    border: 2px solid var(--color-bone-ivory);
+    background-color: var(--color-deep-maroon);
+    color: var(--color-warm-ivory);
+    border: 2px solid var(--color-champagne);
     cursor: pointer;
     z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
     transition: all 0.3s ease;
     padding: 0;
 }
 
 .music-toggle:hover {
     transform: scale(1.1);
-    background-color: var(--color-warm-taupe);
-    /* Ensure color stays same */
+    background-color: #9A2A3A;
+    box-shadow: 0 6px 16px rgba(128, 0, 32, 0.4);
 }
 
 .music-toggle svg {
@@ -1498,4 +1548,60 @@ a.btn-secondary {
 
 .music-toggle .hidden {
     display: none;
+}
+
+/* Utility Classes for Color Palette */
+.bg-sage-green {
+    background-color: #8A9A5B;
+}
+
+.bg-deep-walnut {
+    background-color: #654e2f;
+}
+
+.bg-terracotta {
+    background-color: #C07856;
+}
+
+.bg-dusty-blue {
+    background-color: #647C90;
+}
+
+.bg-olive-green {
+    background-color: #5E6240;
+}
+
+.bg-dove-grey {
+    background-color: #999999;
+}
+
+/* Gift Shipping Info */
+.gift-shipping-info {
+    margin-top: 20px;
+}
+
+.gift-shipping-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.gift-shipping-address {
+    margin-bottom: 10px;
+}
+
+.gift-map-link {
+    text-decoration: none;
+}
+
+.gift-product-recommendation {
+    margin-top: 20px;
+}
+
+.gift-product-label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.gift-product-link {
+    text-decoration: none;
 }
