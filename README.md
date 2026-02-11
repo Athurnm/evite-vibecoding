@@ -1,124 +1,140 @@
-# 💍 Athur & Dara Wedding E-Vite
+# 💍 The Wedding of Athur & Dara
 
-A premium, "Ethereal Earth" themed wedding invitation web application. Built as a responsive Single Page Application (SPA) with a custom backend for RSVPs and dynamic wishes.
+*A premium, responsive wedding invitation web application built with a custom "Ethereal Earth" design system.*
 
 ![Couple Illustration](public/assets/couple-illustration.png)
 
-## ✨ Features
+## ✨ Overview
 
-- **Modern Aesthetic:** "Ethereal Earth" design system (White/Bone/Warm Taupe).
-- **Dynamic Content:**
-  - **Guest Personalization:** `?to=Name` logic to personalize the greeting.
-  - **Time Variants:** `?type=akad` vs `?type=resepsi` (default) views.
-  - **Wishes Carousel:** Read wishes from other guests in real-time.
-- **Bilingual Support:**
-  - Full English and Bahasa Indonesia translations.
-  - Sticky language toggle for easy switching.
-- **Interactive Story:** Vertical timeline with floating floral animations.
-- **Background Music:** Auto-play audio with a floating mute/unmute toggle.
-- **RSVP System:**
-  - Submit Name, Attendance, and Wishes.
-  - Data stored securely in PostgreSQL database.
-  - "Add to Google Calendar" integration.
-- **Admin Features:** Download RSVP data as CSV.
+This application serves as the digital invitation for the wedding of Athur and Dara. It features a sophisticated, nature-inspired design ("Maroon Romance & Ethereal Earth") and provides a seamless experience for guests to RSVP, view the schedule, send wishes, and access the gift registry.
+
+The project is built as a **Single Page Application (SPA)** using Vanilla JavaScript and CSS Variables for maximum performance and design fidelity, backed by Vercel Serverless Functions.
+
+## 🚀 Key Features
+
+### 🎨 Design & Experience
+
+- **"Ethereal Earth" Theme:** A custom design system featuring warm neutrals, maroon accents, and organic textures.
+- **Glassmorphism UI:** Translucent cards and containers for a modern, airy feel.
+- **Scroll Animations:** Interactive vine growth animation that follows the user as they scroll.
+- **Bilingual Support:** Full English and Bahasa Indonesia translations with a sticky language toggle.
+- **Background Music:** Auto-play audio ("Love Wins All" - IU) with a floating mute/unmute control.
+- **Interactive Story:** A vertical timeline showcasing the couple's journey with floating floral animations.
+
+### 💌 Guest Services
+
+- **Smart RSVP System:**
+  - **Personalized Greeting:** `?to=Name` URL parameter auto-fills the guest's name.
+  - **Dynamic Guest Limits:** intelligent drop-downs for adults and children based on invite type.
+  - **Attendance Tracking:** Simple "Yes/No" confirmation.
+  - **State Persistence:** Returning users see their previously submitted RSVP details automatically pre-filled.
+- **Wishes Carousel:** A real-time, auto-scrolling display of well-wishes from other guests.
+- **Add to Calendar:** One-click integration with Google Calendar (pre-filled with date, time, and location).
+- **Direct Navigation:** Deep links to Google Maps for the wedding venue.
+
+### 🎁 Gift Registry & Cash Angpao
+
+- **Dual-Mode Registry:**
+  - **Physical Gifts:** Browse a curated list of items or select "Other" to gift a custom item.
+  - **Cash Transfer:** Copy bank account numbers (BCA, Mandiri, BSI, Blu) with a single click.
+- **WhatsApp Confirmation:** "Share to Bride" button pre-fills a WhatsApp message for transfer proof.
+- **Smart Recommendations:** Direct links to recommended e-commerce stores for specific gift items.
+
+### 📊 Analytics & Insights
+
+- **PostHog Integration:** Tracks tracking events for:
+  - Page Views
+  - RSVP Submissions
+  - Registry Interactions (Item Selection, Cash Tab Views)
+  - Music Toggles
+- **Data Export:** Admin endpoint to download all RSVPs as a CSV file.
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Vite, Vanilla JS, CSS Variables (No heavy frameworks).
-- **Backend:** Vercel Serverless Functions (Node.js).
-- **Database:** Vercel Postgres.
-- **Tools:** `csv-writer` for exports.
+- **Frontend:**
+  - **Core:** Vanilla JavaScript (ES6+), HTML5.
+  - **Styling:** CSS Variables (Custom Design System), Flexbox/Grid.
+  - **Build Tool:** Vite.
+- **Backend:**
+  - **Runtime:** Node.js (Vercel Serverless Functions).
+  - **Database:** Vercel Postgres (for RSVPs).
+  - **APIs:** Custom endpoints for Registry, RSVPs, and State Management.
+- **Analytics:** PostHog (`posthog-js`).
+- **Utilities:** `csv-writer` (Exports), `google-spreadsheet` (Registry Source).
+
+## 📂 Project Structure
+
+```text
+├── public/assets/       # Images, Audio & Static Assets
+├── api/                 # Vercel Serverless Functions
+│   ├── rsvp.js          # Handle RSVP submissions (POST)
+│   ├── registry.js      # Fetch/Update Gift Registry items
+│   ├── state.js         # Retrieve user's previous RSVP/Gift state
+│   ├── wishes.js        # Fetch latest wishes
+│   └── seed.js          # Database initialization
+├── index.html           # Main Entry Point
+├── main.js              # Core Logic (State, UI, API Calls)
+├── translations.js      # Bilingual Dictionary (EN/ID)
+├── style.css            # Global Styles & Design System
+├── design-guideline.md  # Detailed Brand & UI Documentation
+└── package.json         # Dependencies & Scripts
+```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js (v18+ recommended)
-- Package Manager (npm or yarn)
+- Vercel CLI (`npm i -g vercel`)
 
-### Installation
+### Local Development
 
-1. Clone the repository:
+1. **Clone and Install:**
 
     ```bash
     git clone https://github.com/Athurnm/evite-vibecoding.git
-    cd athur-dara-evite
-    ```
-
-2. Install dependencies:
-
-    ```bash
+    cd evite-vibecoding
     npm install
     ```
 
-### 🏃‍♂️ Running the Application
+2. **Environment Variables:**
+   Create a `.env.local` file with the following keys (ask admin for values):
 
-To run the full application (Frontend + Backend), use the Vercel CLI:
+    ```env
+    POSTGRES_URL="..."
+    POSTGRES_PRISMA_URL="..."
+    POSTGRES_URL_NON_POOLING="..."
+    POSTGRES_USER="..."
+    POSTGRES_HOST="..."
+    POSTGRES_PASSWORD="..."
+    POSTGRES_DATABASE="..."
+    VITE_POSTHOG_KEY="..."
+    VITE_POSTHOG_HOST="..."
+    ```
 
-```bash
-vercel dev
-# Runs at http://localhost:3000
-```
-
-Or for frontend-only development:
-
-```bash
-npm run dev
-# Frontend runs at http://localhost:5173 (API calls will fail without backend)
-```
-
-### Deployment via Vercel (Recommended)
-
-1. Push this repository to GitHub.
-2. Log in to [Vercel](https://vercel.com).
-3. **Add New Project** -> Import this repository.
-4. **Database:**
-    - In the Vercel Project Dashboard, click **Storage**.
-    - Click **Connect Store** -> **Postgres** -> **Create New**.
-    - Follow the prompts. Vercel will automatically add the necessary environment variables (`POSTGRES_URL`, etc.).
-5. **Environment Variables:** Ensure the database links are correct (handled auto by Vercel usually).
-6. **Deploy:** Click Deploy.
-7. **Initialize Database:**
-    - After deployment, visit `https://your-project.vercel.app/api/seed` in your browser once. This creates the `rsvp` table.
-
-### 🏃‍♂️ Running Locally (Vercel)
-
-For the best local experience with Serverless Functions:
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link project: `vercel link`
-3. Pull env vars: `vercel env pull .env.local`
-4. Run:
+3. **Run Development Server:**
 
     ```bash
     vercel dev
+    # Runs frontend + backend functions at http://localhost:3000
     ```
 
-## 📖 API Documentation
+    *Note: Using `npm run dev` (Vite only) will start the frontend at localhost:5173, but API calls to `/api/...` will fail without the Vercel environment.*
 
-| Method | Endpoint | Description | Body |
+## 📖 API Reference
+
+| Endpoint | Method | Description | Payload Example |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/rsvp` | Submit a new RSVP. | `{ "name": "...", "guests": 1, "attendance": "yes", "wishes": "..." }` |
-| `GET` | `/api/wishes` | Get latest 20 wishes. | - |
-| `GET` | `/api/rsvp/download` | Download all RSVPs as `.csv`. | - |
-
-## 📂 Project Structure
-
-```text
-├── public/assets/       # Images & Static assets
-├── api/                 # Serverless Backend Functions
-├── index.html           # Main HTML entry
-├── main.js              # Frontend Logic (Carousel, RSVP, URL Params)
-├── translations.js      # Bilingual Text Data
-├── our-story.md         # Content for Our Story section
-├── style.css            # Global Styles (CSS Variables)
-├── design-guideline.md  # Brand & Design Guidelines
-└── package.json         # Dependencies
-```
+| `/api/rsvp` | `POST` | Submit a new RSVP. | `{ "name": "Athur", "guests": 2, "attendance": "yes", "wishes": "Congrats!" }` |
+| `/api/registry` | `GET` | Get available gift items. | - |
+| `/api/registry` | `POST` | Reserve a gift item. | `{ "item": "Coffee Maker", "sender": "Dara" }` |
+| `/api/wishes` | `GET` | Get the latest 20 wishes. | - |
+| `/api/state` | `GET` | Get user's existing state. | `?name=GuestName` |
+| `/api/rsvp/download` | `GET` | Download RSVPs as CSV. | - |
 
 ## 🎨 Design Reference
 
-See [design-guideline.md](design-guideline.md) for color palettes and font choices.
+See [design-guideline.md](design-guideline.md) for detailed color palettes, typography choices, and vendor guidelines.
 
 ---
 
