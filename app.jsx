@@ -145,54 +145,54 @@ export default function VendorGuidelines() {
             <FontStyles />
 
             {/* HEADER HERO */}
-            <header className="bg-white border-b border-sand pt-12 pb-8 px-6 sticky top-0 z-50 bg-opacity-95 backdrop-blur-sm shadow-sm">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <header className="bg-white border-b border-sand py-3 md:pt-12 md:pb-8 px-4 md:px-6 sticky top-0 z-50 bg-opacity-95 backdrop-blur-sm shadow-sm transition-all duration-300">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 md:gap-6">
                     <div className="text-center md:text-left">
-                        <div className="flex items-center justify-center md:justify-start gap-3 text-taupe text-xs font-bold tracking-[0.2em] uppercase mb-2">
+                        <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 text-taupe text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-1 md:mb-2">
                             <span>Production Guidelines</span>
                             <span className="w-1 h-1 bg-terracotta rounded-full"></span>
-                            <span>Decoration & Souvenir</span>
+                            <span>Decoration</span>
                         </div>
-                        <h1 className="font-heading text-4xl md:text-5xl text-burgundy font-semibold mb-2">
-                            Athur <span className="font-script text-maroon text-5xl">&</span> Dara
+                        <h1 className="font-heading text-3xl md:text-5xl text-burgundy font-semibold mb-1 md:mb-2 leading-tight">
+                            Athur <span className="font-script text-maroon text-4xl md:text-5xl">&</span> Dara
                         </h1>
-                        <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-charcoal mt-4 font-medium">
-                            <span className="flex items-center gap-1.5"><Calendar size={16} className="text-terracotta" /> March 28, 2026</span>
-                            <span className="flex items-center gap-1.5"><MapPin size={16} className="text-terracotta" /> Steikhaus, Bandung</span>
-                            <span className="flex items-center gap-1.5"><Clock size={16} className="text-terracotta" /> 08:00 - 13:00</span>
+                        <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 text-xs md:text-sm text-charcoal mt-2 font-medium">
+                            <span className="flex items-center gap-1"><Calendar size={14} className="text-terracotta" /> Mar 28, 2026</span>
+                            <span className="hidden md:flex items-center gap-1.5"><MapPin size={16} className="text-terracotta" /> Steikhaus, Bandung</span>
+                            <span className="flex items-center gap-1"><Clock size={14} className="text-terracotta" /> 08:00 - 13:00</span>
                         </div>
                     </div>
 
                     {/* Asset Download */}
-                    <div className="flex flex-col items-end gap-2 w-full md:w-auto">
+                    <div className="flex flex-col items-center md:items-end gap-1.5 w-full md:w-auto">
                         <a
                             href="https://drive.google.com/file/d/1AaXeekBRExwG11kZvO1nipsI1-_V_ALg/view?usp=drive_link"
                             target="_blank"
                             rel="noreferrer"
-                            className="flex w-full md:w-auto justify-center items-center gap-2 bg-maroon text-ivory px-8 py-3 rounded-lg font-medium text-sm hover:bg-maroon-hover transition-colors shadow-lg"
+                            className="flex w-full md:w-auto justify-center items-center gap-2 bg-maroon text-ivory px-5 py-2 md:px-8 md:py-3 rounded-lg font-medium text-xs md:text-sm hover:bg-maroon-hover transition-colors shadow-lg touch-manipulation min-h-[44px]"
                         >
-                            <Download size={18} />
-                            Download Monogram Asset
+                            <Download size={16} />
+                            Download Asset
                         </a>
-                        <p className="text-[10px] text-taupe">
+                        <p className="text-[10px] text-taupe hidden md:block">
                             Required for Souvenirs & Signage
                         </p>
                     </div>
                 </div>
             </header>
 
-            <main className="max-w-6xl mx-auto px-6 pt-10 space-y-16">
+            <main className="max-w-6xl mx-auto px-6 pt-8 md:pt-10 space-y-12 md:space-y-16">
 
                 {/* 1. VISUAL IDENTITY & CONCEPT */}
                 <section className="grid md:grid-cols-12 gap-8">
                     {/* Left: Concept Text */}
                     <div className="md:col-span-8 space-y-6">
                         <SectionHeader icon={<Lightbulb className="text-terracotta" />} title="Design Concept" />
-                        <div className="glass-card p-8 rounded-xl">
-                            <p className="text-xl leading-relaxed font-heading italic text-burgundy mb-4">
+                        <div className="glass-card p-6 md:p-8 rounded-xl">
+                            <p className="text-lg md:text-xl leading-relaxed font-heading italic text-burgundy mb-4">
                                 "Maroon Romance Meets Ethereal Earth"
                             </p>
-                            <p className="text-base leading-relaxed text-charcoal mb-6">
+                            <p className="text-sm md:text-base leading-relaxed text-charcoal mb-6">
                                 We are creating a <strong>warm, romantic sanctuary</strong>. The design anchors on the couple's <strong>Deep Maroon</strong> attire, contrasted against a canvas of <strong>Warm Ivory, Champagne, and Earth Tones</strong>.
                             </p>
                             <div className="flex gap-2 flex-wrap">
@@ -217,12 +217,15 @@ export default function VendorGuidelines() {
                                 <img
                                     src="/assets/monogram.png"
                                     alt="Official Monogram A&D"
+                                    width="200"
+                                    height="200"
+                                    loading="lazy"
                                     className="max-w-full max-h-[200px] object-contain opacity-90 hover:opacity-100 transition-opacity"
                                 />
                             </div>
                             <div className="p-4 bg-ivory border-t border-sand text-center">
                                 <p className="text-[10px] text-taupe">
-                                    File: Monogram_AD_Final.png<br />
+                                    File: monogram-maroon-gold-full.png<br />
                                     Usage: Embossed tags, Signage
                                 </p>
                             </div>

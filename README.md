@@ -40,6 +40,19 @@ The project is built as a **Single Page Application (SPA)** using Vanilla JavaSc
 - **WhatsApp Confirmation:** "Share to Bride" button pre-fills a WhatsApp message for transfer proof.
 - **Smart Recommendations:** Direct links to recommended e-commerce stores for specific gift items.
 
+### 📱 Mobile-First Experience
+
+- **Compact Sticky Header:** Optimized for small screens to maximize content visibility while keeping essential actions accessible.
+- **Touch-Friendly Targets:** All interactive elements feature minimum 44px touch targets for easy navigation.
+- **Responsive Layouts:** Fluid grids and flexbox ensure content adapts seamlessly from mobile to desktop.
+
+### ⚡ Performance Optimized
+
+- **Core Web Vitals Focus:**
+  - **CLS Prevention:** Explicit image dimensions to prevent layout shifts.
+  - **Efficient Fonts:** `font-display: swap` strategy for rapid text rendering.
+  - **Lazy Loading:** Native lazy loading for off-screen images.
+
 ### 📊 Analytics & Insights
 
 - **PostHog Integration:** Tracks tracking events for:
