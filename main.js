@@ -174,10 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Add to Calendar Logic
     const calendarBtn = document.getElementById('add-to-calendar');
     calendarBtn.addEventListener('click', () => {
-        // 11:00 WIB = 04:00 UTC
-        // 13:00 WIB = 06:00 UTC
-        const timeStart = '040000Z';
-        const timeEnd = '060000Z';
+        // 11:00 WIB = 04:00 UTC (Resepsi)
+        // 08:00 WIB = 01:00 UTC (Akad)
+        // 13:00 WIB = 06:00 UTC (End)
+
+        const params = new URLSearchParams(window.location.search);
+        const eventType = params.get('type');
+
+        let timeStart = '040000Z'; // Default 11:00 WIB
+        if (eventType === 'akad') {
+            timeStart = '010000Z'; // 08:00 WIB
+        }
+
+        const timeEnd = '060000Z'; // Always 13:00 WIB
         const eventDate = `20260328T${timeStart}/20260328T${timeEnd}`;
 
         const title = encodeURIComponent("The Wedding of Athur & Dara");

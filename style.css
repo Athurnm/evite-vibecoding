@@ -534,22 +534,42 @@ a.btn-secondary {
 }
 
 .btn-primary {
-    display: block;
-    width: 100%;
-    padding: 15px;
     background-color: var(--color-maroon);
-    color: var(--color-paper-white);
+    color: #F8F6F0;
+    /* Warm Ivy from app.js */
+    padding: 0.75rem 2rem;
+    /* Matches px-8 py-3 */
     border: none;
-    font-family: var(--font-heading);
-    letter-spacing: 2px;
+    border-radius: 0.5rem;
+    /* Matches rounded-lg */
+    font-family: var(--font-body);
+    /* Matches font-medium (Montserrat) */
+    font-weight: 500;
+    /* Matches font-medium */
+    font-size: 0.875rem;
+    /* Matches text-sm */
     cursor: pointer;
-    transition: background-color 0.3s;
+    width: 100%;
+    /* Flex properties to match app.js */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    /* Matches gap-2 */
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+
+    /* Matches shadow-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-primary:hover {
     background-color: #9A2A3A;
-    /* Lighter Maroon */
+    /* Kept as requested by user / app.js match */
+    transform: translateY(-2px);
 }
+
 
 /* Wishes Carousel */
 .hidden-initially {

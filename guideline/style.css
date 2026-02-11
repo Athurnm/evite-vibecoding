@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+    /* Brand Colors */
+    --color-maroon: #800020;
+    --color-maroon-hover: #9A2A3A;
+    --color-ivory: #F8F6F0;
+    --color-champagne: #F7E7CE;
+    --color-taupe: #A89F91;
+    --color-burgundy: #6B4C4C;
+    --color-sand: #E8DCC4;
+    --color-charcoal: #4A3F35;
+    --color-terracotta: #D4A5A5;
+    --color-gold-natural: #C19A6B;
+
+    /* Fonts */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-script: 'Pinyon Script', cursive;
+}
