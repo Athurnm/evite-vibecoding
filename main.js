@@ -728,7 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (shareWaBtn) {
         shareWaBtn.addEventListener('click', () => {
             // REPLACE WITH BRIDE'S NUMBER
-            const phone = "628111700405";
+            const phone = "6285721348085";
 
             const message = encodeURIComponent("Halo Dara, saya sudah transfer hadiah pernikahan untuk Athur & Dara. Berikut buktinya:");
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');

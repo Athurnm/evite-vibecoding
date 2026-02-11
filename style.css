@@ -1145,11 +1145,7 @@ a.btn-secondary {
     font-weight: 500;
 }
 
-.couple-divider {
-    font-family: var(--font-accent);
-    font-size: 2rem;
-    color: var(--color-gold);
-}
+
 
 /* Vine Scroll Animation */
 .details {
