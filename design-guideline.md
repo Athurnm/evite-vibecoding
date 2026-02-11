@@ -207,6 +207,7 @@ We need a font pairing that screams "Modern" but remains romantic.
   * Printed in **Warm Taupe** on White paper.
   * Embossed (Timbul) on the souvenir tag.
   * Neon Sign (Warm White) on the Photobooth backdrop.
+* **Sample:** You can check the following drive link for the sample (<https://drive.google.com/drive/folders/10fnTWbDCSvNRARGnt6OaD70k-K1JQ2zI?usp=sharing>)
 
 ---
 
