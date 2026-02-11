@@ -10,6 +10,7 @@ dist/
 # Environment
 .env
 booming-primer-235316-0c3ba1cfcd55.json
+.agent
 
 # Logs
 npm-debug.log*

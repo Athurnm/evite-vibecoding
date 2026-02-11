@@ -4,7 +4,12 @@
     --color-bone-ivory: #F5F5F0;
     --color-warm-taupe: #A89F91;
     --color-muted-blush: #E5D0CC;
-    --color-text-dark: #4A4A4A;
+    --color-text-dark: #4A3F35;
+
+    /* New Palette Additions */
+    --color-maroon: #800020;
+    --color-champagne: #F7E7CE;
+    --color-terracotta: #D4A5A5;
 
     /* Typography */
     --font-heading: 'Playfair Display', serif;
@@ -22,7 +27,10 @@
 
     /* Guest Attire Colors */
     --color-deep-walnut: #4A3728;
-    --color-terracotta: #C07856;
+    --color-terracotta-attire: #C07856;
+
+    /* Decoration */
+    --color-burgundy-brown: #6B4C4C;
 }
 
 * {
@@ -45,7 +53,7 @@ h3,
 h4 {
     font-family: var(--font-heading);
     font-weight: 400;
-    color: var(--color-warm-taupe);
+    color: var(--color-burgundy-brown);
 }
 
 .script-font {
@@ -287,7 +295,7 @@ main:not(.hidden) {
 
 .couple-names span {
     font-size: 4rem;
-    color: var(--color-muted-blush);
+    color: var(--color-maroon);
 }
 
 .date {
@@ -466,8 +474,9 @@ main:not(.hidden) {
     padding: 12px 24px;
     height: 50px;
     min-width: 250px;
-    background-color: var(--color-bone-ivory);
-    color: var(--color-warm-taupe);
+    min-width: 250px;
+    background-color: var(--color-champagne);
+    color: var(--color-burgundy-brown);
     text-decoration: none;
     font-family: var(--font-heading);
     font-size: 1rem;
@@ -531,17 +540,18 @@ a.btn-secondary {
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: var(--color-warm-taupe);
-    color: #fff;
+    background-color: var(--color-maroon);
+    color: var(--color-paper-white);
     border: none;
     font-family: var(--font-heading);
     letter-spacing: 2px;
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
-    opacity: 0.9;
+    background-color: #9A2A3A;
+    /* Lighter Maroon */
 }
 
 /* Wishes Carousel */
@@ -651,8 +661,8 @@ a.btn-secondary {
 }
 
 .event-schedule-container {
-    background-color: rgba(93, 83, 72, 0.85);
-    /* Darker Taupe/Brown with 85% opacity */
+    background-color: rgba(107, 76, 76, 0.85);
+    /* Burgundy Brown with 85% opacity */
     /* Darker Taupe/Brown with 85% opacity */
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -765,7 +775,7 @@ a.btn-secondary {
     font-family: var(--font-heading);
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--color-warm-taupe);
+    color: var(--color-burgundy-brown);
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
@@ -773,8 +783,8 @@ a.btn-secondary {
 }
 
 .btn-outline:hover {
-    background-color: var(--color-warm-taupe);
-    color: white;
+    background-color: var(--color-champagne);
+    color: var(--color-burgundy-brown);
 }
 
 .btn-map {
