@@ -48,9 +48,28 @@ export default async function handler(req, res) {
         }
 
         if (req.method === 'POST') {
-            const { item, sender } = req.body; // 'sender' is the name key
+            // Defensive: req.body may be a string in vercel dev
+            let body = req.body;
+            if (typeof body === 'string') {
+                try {
+                    body = JSON.parse(body);
+                } catch (e) {
+                    console.error('Failed to parse request body:', body);
+                    return res.status(400).json({ error: 'Invalid JSON body' });
+                }
+            }
+
+            const item = body?.item;
+            const sender = body?.sender;
+
+            console.log('Registry POST received:', { item, sender, bodyType: typeof req.body });
+
             if (!item || !sender) {
-                return res.status(400).json({ error: 'Missing item or sender' });
+                console.error('Registration failed: Missing item or sender', { item, sender, body });
+                return res.status(400).json({
+                    error: 'Missing item or sender',
+                    details: `Item: ${item ? 'Present' : 'Missing'}, Sender: ${sender ? 'Present' : 'Missing'}`
+                });
             }
 
             const rows = await sheet.getRows();
@@ -73,47 +92,58 @@ export default async function handler(req, res) {
             }
 
             // 2. Claim New Item
-            // Check if it's "Other" (Custom)
-            const isCustom = (item === 'other') || !rows.some(r => r.get('Item Name') === item);
+            // Check if it's "Other" (Custom) — item won't exist in the sheet
+            const existingRow = rows.find(r => r.get('Item Name') === item);
 
-            if (isCustom) {
-                // For "Other", we usually just add a new row. 
-                // But if they are changing "Other" to "Other", we might just add another? 
-                // Or we accept it. Let's follow existing logic for custom item creation.
-                // NOTE: Existing logic generated ID.
-
-                // If they are submitting a custom item, `item` itself might be the custom text?
-                // In main.js: if item === 'other', item = custom_item (the text).
-
-                // So here 'item' IS the custom text.
+            if (!existingRow) {
+                // Custom item: add a new row to the sheet (same format as existing items)
                 const randomId = Math.random().toString(36).substring(2, 8).toUpperCase();
-                await sheet.addRow({
+
+                // Use the actual header values from the sheet to avoid newline mismatch
+                const headerValues = sheet.headerValues;
+                const purchaseHeaderActual = headerValues.find(h => h.toLowerCase().includes('purchased') && h.toLowerCase().includes('true'));
+
+                const newRowData = {
                     'ID': randomId,
                     'Item Name': item,
-                    'Purchased By': sender,
-                    [PURCHASE_HEADER]: 'TRUE',
-                    'Notes include other relevant infos': 'Custom items added via website'
-                });
+                    'Purchased By': sender
+                };
+
+                // Set the purchase status using the actual header found in the sheet
+                if (purchaseHeaderActual) {
+                    newRowData[purchaseHeaderActual] = 'TRUE';
+                } else {
+                    // Fallback to the constant
+                    newRowData[PURCHASE_HEADER] = 'TRUE';
+                }
+
+                // Add notes column if it exists
+                const notesHeader = headerValues.find(h => h.toLowerCase().includes('notes'));
+                if (notesHeader) {
+                    newRowData[notesHeader] = 'Custom gift added via website';
+                }
+
+                console.log('Adding custom item to sheet:', newRowData);
+                await sheet.addRow(newRowData);
+                console.log('Custom item added successfully:', item);
 
             } else {
-                // Existing Item
-                const targetRow = rows.find(r => r.get('Item Name') === item);
-                if (targetRow) {
-                    const status = targetRow.get(PURCHASE_HEADER);
-                    const isTaken = status && status.toString().toUpperCase().includes('TRUE');
-                    const currentOwner = targetRow.get('Purchased By');
+                // Existing Item — update the row in-place
+                const status = existingRow.get(PURCHASE_HEADER);
+                const isTaken = status && status.toString().toUpperCase().includes('TRUE');
+                const currentOwner = existingRow.get('Purchased By');
 
-                    // Allow if not taken OR taken by self
-                    if (isTaken && currentOwner !== sender) {
-                        return res.status(400).json({ error: 'Item already purchased by someone else.' });
-                    }
-
-                    targetRow.assign({
-                        'Purchased By': sender,
-                        [PURCHASE_HEADER]: 'TRUE'
-                    });
-                    await targetRow.save();
+                // Allow if not taken OR taken by self
+                if (isTaken && currentOwner !== sender) {
+                    return res.status(400).json({ error: 'Item already purchased by someone else.' });
                 }
+
+                existingRow.assign({
+                    'Purchased By': sender,
+                    [PURCHASE_HEADER]: 'TRUE'
+                });
+                await existingRow.save();
+                console.log('Existing item claimed:', item, 'by:', sender);
             }
 
             // 3. Update DB State

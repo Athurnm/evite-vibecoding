@@ -99,6 +99,7 @@ Guests should choose from these complementary earth tones:
 * **Terracotta** `#C07856` - Warm, earthy
 * **Olive Green** `#5E6240` - Deep, natural
 * **Dove Grey** `#999999` - Classic neutral
+* **Deep Walnut** `#4A3728` - Rich, dark brown
 
 > **🚫 Strictly Avoid:** Pure White & Maroon (reserved for bride & groom), Bright/Neon colors, Black (too formal/heavy for morning celebration).
 
@@ -611,6 +612,7 @@ GUEST ATTIRE (Choose from)
 • Dusty Blue #647C90
 • Olive Green #5E6240
 • Dove Grey #999999
+• Deep Walnut #4A3728
 
 AVOID
 ✗ Pure White (reserved for Akad)
@@ -629,6 +631,7 @@ WEAR THESE COLORS ✓
 🔵 Dusty Blue
 🫒 Olive Green
 ⚪ Dove Grey
+🟤 Deep Walnut
 
 DON'T WEAR ✗
 ⚪ White (reserved for ceremony)

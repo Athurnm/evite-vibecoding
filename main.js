@@ -646,17 +646,28 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             const formData = new FormData(giftForm);
-            let item = formData.get('item');
-            if (item === 'other') {
-                item = formData.get('custom_item');
+            let selectedItem = formData.get('item');
+
+            // Check if 'other' is selected, then use 'custom_item' input
+            if (selectedItem === 'other') {
+                const customVal = formData.get('custom_item');
+                selectedItem = customVal ? customVal.trim() : '';
             }
             const sender = formData.get('sender');
+
+            // Client-side validation guard
+            if (!selectedItem || !sender) {
+                alert('Please fill in all required fields.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
 
             try {
                 const res = await fetch('/api/registry', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ item, sender })
+                    body: JSON.stringify({ item: selectedItem, sender })
                 });
 
                 if (res.ok) {
@@ -673,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Track Gift
                     posthog.capture('registry_submitted', {
-                        item: item,
+                        item: selectedItem,
                         type: selectedOption?.dataset?.link ? 'product_link' : 'custom_cash'
                     });
 

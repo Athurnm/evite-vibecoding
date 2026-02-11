@@ -19,6 +19,10 @@
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
+
+    /* Guest Attire Colors */
+    --color-deep-walnut: #4A3728;
+    --color-terracotta: #C07856;
 }
 
 * {
@@ -147,6 +151,8 @@ h4 {
     letter-spacing: 1px;
     background-color: #A89F91;
     /* Deep Earth */
+    /* Deep Earth */
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     padding: 8px 16px;
     /* Slightly larger padding */
@@ -201,10 +207,61 @@ main:not(.hidden) {
 
 .section {
     padding: var(--spacing-xl) var(--spacing-md);
-    min-height: auto;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+}
+
+/* Palette Colors */
+.palette-dove-grey {
+    background-color: #999999;
+}
+
+.palette-sage-green {
+    background-color: #8A9A5B;
+}
+
+.palette-dusty-blue {
+    background-color: #647C90;
+}
+
+.palette-olive-green {
+    background-color: #5E6240;
+}
+
+.palette-deep-walnut {
+    background-color: #4A3728;
+}
+
+.palette-terracotta {
+    background-color: #C07856;
+}
+
+/* Gift Section Styles */
+.gift-shipping-info {
+    margin-top: 20px;
+}
+
+.gift-recipient-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.gift-address-text {
+    margin-bottom: 0px;
+}
+
+.gift-address-container {
+    margin-bottom: 15px;
+}
+
+.gift-product-section {
+    margin-top: 20px;
+}
+
+.gift-store-label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
 }
 
 .hero {
@@ -596,6 +653,8 @@ a.btn-secondary {
 .event-schedule-container {
     background-color: rgba(93, 83, 72, 0.85);
     /* Darker Taupe/Brown with 85% opacity */
+    /* Darker Taupe/Brown with 85% opacity */
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-radius: 30px;
     padding: var(--spacing-xl) var(--spacing-md);
@@ -710,6 +769,7 @@ a.btn-secondary {
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
+    display: inline-block;
 }
 
 .btn-outline:hover {
