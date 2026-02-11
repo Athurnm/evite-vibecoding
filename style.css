@@ -154,13 +154,11 @@ h4 {
 .lang-toggle {
     display: flex;
     align-items: center;
-    background-color: #2d0808a6;
+    background-color: #716165;
     gap: 8px;
     font-family: var(--font-body);
     font-size: 0.9rem;
     letter-spacing: 1px;
-    background-color: #A89F91;
-    /* Deep Earth */
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     padding: 8px 16px;
@@ -672,7 +670,7 @@ a.btn-secondary {
 }
 
 .event-schedule-container {
-    background-color: #2d0808a6;
+    background-color: #1a00079e;
     /* Burgundy Brown with transparency */
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -1552,7 +1550,7 @@ a.btn-secondary {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background-color: #2d0808a6;
+    background-color: #716165;
     color: var(--color-paper-white);
     border: 2px solid var(--color-bone-ivory);
     cursor: pointer;
@@ -1567,7 +1565,7 @@ a.btn-secondary {
 
 .music-toggle:hover {
     transform: scale(1.1);
-    background-color: #2d0808a6;
+    background-color: #716165;
     /* Ensure color stays same */
 }
 
