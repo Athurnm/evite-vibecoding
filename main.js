@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // REPLACE WITH BRIDE'S NUMBER
             const phone = "6285721348085";
 
-            const message = encodeURIComponent("Halo Dara, saya sudah transfer hadiah pernikahan untuk Athur & Dara. Berikut buktinya:");
+            const message = encodeURIComponent("Halo Dara!\nSaya sudah kirim hadiah untuk pernikahan Athur & Dara. Berikut buktinya:");
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         });
     }
