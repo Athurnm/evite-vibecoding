@@ -28,7 +28,7 @@ The project is built as a **Single Page Application (SPA)** using Vanilla JavaSc
   - **Dynamic Guest Limits:** intelligent drop-downs for adults and children based on invite type.
   - **Attendance Tracking:** Simple "Yes/No" confirmation.
   - **State Persistence:** Returning users see their previously submitted RSVP details automatically pre-filled.
-- **Wishes Carousel:** A real-time, auto-scrolling display of well-wishes from other guests.
+- **Wishes Carousel:** A real-time, horizontal auto-scrolling display of well-wishes from other guests.
 - **Add to Calendar:** One-click integration with Google Calendar (pre-filled with date, time, and location).
 - **Direct Navigation:** Deep links to Google Maps for the wedding venue.
 
@@ -79,17 +79,25 @@ The project is built as a **Single Page Application (SPA)** using Vanilla JavaSc
 
 ```text
 ├── public/assets/       # Images, Audio & Static Assets
+├── src/                 # Application Source Code
+│   ├── main.js          # Main Invitation Logic
+│   ├── App.jsx          # Vendor Guidelines React App
+│   ├── style.css        # Global Styles
+│   ├── translations.js  # Bilingual Dictionary
+│   └── guideline/       # Guidelines App Source
+├── docs/                # Documentation
+│   ├── design-guideline.md
+│   ├── our-story.md
+│   └── asset-reference/
 ├── api/                 # Vercel Serverless Functions
 │   ├── rsvp.js          # Handle RSVP submissions (POST)
 │   ├── registry.js      # Fetch/Update Gift Registry items
 │   ├── state.js         # Retrieve user's previous RSVP/Gift state
 │   ├── wishes.js        # Fetch latest wishes
 │   └── seed.js          # Database initialization
+├── supabase/migrations/ # SQL Migrations
 ├── index.html           # Main Entry Point
-├── main.js              # Core Logic (State, UI, API Calls)
-├── translations.js      # Bilingual Dictionary (EN/ID)
-├── style.css            # Global Styles & Design System
-├── design-guideline.md  # Detailed Brand & UI Documentation
+├── guideline/index.html # Vendor Guidelines Entry Point
 └── package.json         # Dependencies & Scripts
 ```
 
@@ -147,7 +155,7 @@ The project is built as a **Single Page Application (SPA)** using Vanilla JavaSc
 
 ## 🎨 Design Reference
 
-See [design-guideline.md](design-guideline.md) for detailed color palettes, typography choices, and vendor guidelines.
+See [design-guideline.md](docs/design-guideline.md) for detailed color palettes, typography choices, and vendor guidelines.
 
 ---
 
