@@ -80,7 +80,7 @@ const DoDontRow = ({ type, text }) => (
 // --- MAIN APPLICATION ---
 
 export default function VendorGuidelines() {
-    const [lang, setLang] = useState('en');
+    const [lang, setLang] = useState('id');
     const t = (key) => getTranslation(lang, key);
 
     // --- DATA WITH TRANSLATIONS ---

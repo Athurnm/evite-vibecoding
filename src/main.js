@@ -18,7 +18,7 @@ if (POSTHOG_KEY) {
 document.addEventListener('DOMContentLoaded', () => {
     // Language Toggle Logic
     const langBtns = document.querySelectorAll('.lang-btn');
-    let currentLang = 'en'; // Default
+    let currentLang = 'id'; // Default
 
     function updateLanguage(lang) {
         currentLang = lang;
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
 
     // Initialize Language (Default EN) which also renders story and time
-    updateLanguage('en');
+    updateLanguage('id');
 
 
     openBtn.addEventListener('click', () => {
