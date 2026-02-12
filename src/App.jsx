@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Download,
     Palette,
@@ -12,8 +12,10 @@ import {
     MapPin,
     Calendar,
     Clock,
-    ExternalLink
+    ExternalLink,
+    Globe
 } from 'lucide-react';
+import { getTranslation } from './guideline/translations';
 
 // --- STYLES & FONTS ---
 const FontStyles = () => (
@@ -42,68 +44,6 @@ const FontStyles = () => (
   `}</style>
 );
 
-// --- DATA CONSTANTS ---
-
-const COLORS = {
-    hero: { name: 'Deep Maroon', hex: '#800020', desc: 'Reserved: Bride & Groom Only.' },
-    foundation: [
-        { name: 'Warm Ivory', hex: '#F8F6F0', desc: 'Main Backgrounds, Drapes' },
-        { name: 'Champagne', hex: '#F7E7CE', desc: 'Runners, Fabric, Place Cards' },
-        { name: 'Warm Sand', hex: '#E8DCC4', desc: 'Table Linens, Base Elements' },
-    ],
-    accents: [
-        { name: 'Terracotta Blush', hex: '#D4A5A5', desc: 'Floral Accents, Napkins' },
-        { name: 'Warm Taupe', hex: '#A89F91', desc: 'Typography, Structural Lines' },
-        { name: 'Natural Oak', hex: '#C19A6B', desc: 'Wood Furniture, Crates' },
-    ],
-    text: [
-        { name: 'Burgundy Brown', hex: '#6B4C4C', desc: 'Headers & Emphasis' },
-        { name: 'Charcoal Brown', hex: '#4A3F35', desc: 'Body Text' },
-    ]
-};
-
-const VENDOR_BRIEFS = [
-    {
-        role: "Decorator (Steikhaus)",
-        icon: <Lightbulb className="w-6 h-6 text-gold-natural" />,
-        title: "Warm Romantic Sanctuary",
-        desc: "A warm canvas specifically to contrast the Maroon attire.",
-        points: [
-            "Lighting: 2700K-3000K (Warm Amber) ONLY. No cool white.",
-            "Tables: Expose venue's wooden tables. Use runners, not full cloths.",
-            "Backdrop: Warm Ivory/Champagne. Avoid pure white fabric.",
-            "Vibe: Mediterranean Romance meets Organic Modernism.",
-            "Key: Create a 'Golden Hour' glow even in the morning."
-        ]
-    },
-    {
-        role: "Florist",
-        icon: <Flower className="w-6 h-6 text-terracotta" />,
-        title: "Romantic Earth Blooms",
-        desc: "Organic, asymmetric clusters. Not perfect spheres.",
-        points: [
-            "Primary: Ivory & Champagne Roses, Terracotta Carnations",
-            "Texture: Dried Pampas, Bleached foliage for movement",
-            "Accent: Deep Burgundy Dahlias (Strategic touches only)",
-            "Foliage: Sage/Muted Eucalyptus. NO bright greens.",
-            "Vessels: Amber glass vases or Terracotta pots"
-        ]
-    },
-    {
-        role: "Souvenir & Stationery",
-        icon: <Gift className="w-6 h-6 text-maroon" />,
-        title: "Minimalist Elegance",
-        desc: "Clean lines, warm paper tones, refined typography.",
-        points: [
-            "Paper: Warm Ivory or Champagne stock (Matte/Doff).",
-            "Technique: Embossed (Timbul) monogram preferred.",
-            "Ink: Burgundy Brown (#6B4C4C) or Warm Taupe.",
-            "Finish: No glossy laminates. Natural texture is best.",
-            "Tags: Use the official monogram arch."
-        ]
-    }
-];
-
 // --- COMPONENTS ---
 
 const SectionHeader = ({ icon, title }) => (
@@ -113,7 +53,7 @@ const SectionHeader = ({ icon, title }) => (
     </div>
 );
 
-const ColorCard = ({ color, large = false }) => (
+const ColorCard = ({ color, large = false, t }) => (
     <div className={`group flex flex-col ${large ? 'md:col-span-2' : ''}`}>
         <div
             className={`w-full rounded-lg shadow-sm border border-black/5 transition-transform group-hover:scale-[1.02] ${large ? 'h-32' : 'h-24'}`}
@@ -140,6 +80,70 @@ const DoDontRow = ({ type, text }) => (
 // --- MAIN APPLICATION ---
 
 export default function VendorGuidelines() {
+    const [lang, setLang] = useState('en');
+    const t = (key) => getTranslation(lang, key);
+
+    // --- DATA WITH TRANSLATIONS ---
+    const COLORS = {
+        hero: { name: 'Deep Maroon', hex: '#800020', desc: t('color_hero_desc') },
+        foundation: [
+            { name: 'Warm Ivory', hex: '#F8F6F0', desc: t('color_found_1_desc') },
+            { name: 'Champagne', hex: '#F7E7CE', desc: t('color_found_2_desc') },
+            { name: 'Warm Sand', hex: '#E8DCC4', desc: t('color_found_3_desc') },
+        ],
+        accents: [
+            { name: 'Terracotta Blush', hex: '#D4A5A5', desc: t('color_accent_1_desc') },
+            { name: 'Warm Taupe', hex: '#A89F91', desc: t('color_accent_2_desc') },
+            { name: 'Natural Oak', hex: '#C19A6B', desc: t('color_accent_3_desc') },
+        ],
+        text: [
+            { name: 'Burgundy Brown', hex: '#6B4C4C', desc: t('color_text_1_desc') },
+            { name: 'Charcoal Brown', hex: '#4A3F35', desc: t('color_text_2_desc') },
+        ]
+    };
+
+    const VENDOR_BRIEFS = [
+        {
+            role: t('brief_1_role'),
+            icon: <Lightbulb className="w-6 h-6 text-gold-natural" />,
+            title: t('brief_1_title'),
+            desc: t('brief_1_desc'),
+            points: [
+                t('brief_1_pt_1'),
+                t('brief_1_pt_2'),
+                t('brief_1_pt_3'),
+                t('brief_1_pt_4'),
+                t('brief_1_pt_5')
+            ]
+        },
+        {
+            role: t('brief_2_role'),
+            icon: <Flower className="w-6 h-6 text-terracotta" />,
+            title: t('brief_2_title'),
+            desc: t('brief_2_desc'),
+            points: [
+                t('brief_2_pt_1'),
+                t('brief_2_pt_2'),
+                t('brief_2_pt_3'),
+                t('brief_2_pt_4'),
+                t('brief_2_pt_5')
+            ]
+        },
+        {
+            role: t('brief_3_role'),
+            icon: <Gift className="w-6 h-6 text-maroon" />,
+            title: t('brief_3_title'),
+            desc: t('brief_3_desc'),
+            points: [
+                t('brief_3_pt_1'),
+                t('brief_3_pt_2'),
+                t('brief_3_pt_3'),
+                t('brief_3_pt_4'),
+                t('brief_3_pt_5')
+            ]
+        }
+    ];
+
     return (
         <div className="min-h-screen bg-ivory text-charcoal font-body pb-20">
             <FontStyles />
@@ -149,33 +153,51 @@ export default function VendorGuidelines() {
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 md:gap-6">
                     <div className="text-center md:text-left">
                         <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 text-taupe text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-1 md:mb-2">
-                            <span>Production Guidelines</span>
+                            <span>{t('production_guidelines')}</span>
                             <span className="w-1 h-1 bg-terracotta rounded-full"></span>
-                            <span>Decoration</span>
+                            <span>{t('decoration')}</span>
                         </div>
                         <h1 className="font-heading text-3xl md:text-5xl text-burgundy font-semibold mb-1 md:mb-2 leading-tight">
                             Athur <span className="font-script text-maroon text-4xl md:text-5xl">&</span> Dara
                         </h1>
                         <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 text-xs md:text-sm text-charcoal mt-2 font-medium">
-                            <span className="flex items-center gap-1"><Calendar size={14} className="text-terracotta" /> Mar 28, 2026</span>
-                            <span className="hidden md:flex items-center gap-1.5"><MapPin size={16} className="text-terracotta" /> Steikhaus, Bandung</span>
-                            <span className="flex items-center gap-1"><Clock size={14} className="text-terracotta" /> 08:00 - 13:00</span>
+                            <span className="flex items-center gap-1"><Calendar size={14} className="text-terracotta" /> {t('date')}</span>
+                            <span className="hidden md:flex items-center gap-1.5"><MapPin size={16} className="text-terracotta" /> {t('location')}</span>
+                            <span className="flex items-center gap-1"><Clock size={14} className="text-terracotta" /> {t('time')}</span>
                         </div>
                     </div>
 
-                    {/* Asset Download */}
-                    <div className="flex flex-col items-center md:items-end gap-1.5 w-full md:w-auto">
-                        <a
-                            href="https://drive.google.com/file/d/1AaXeekBRExwG11kZvO1nipsI1-_V_ALg/view?usp=drive_link"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex w-full md:w-auto justify-center items-center gap-2 bg-maroon text-ivory px-5 py-2 md:px-8 md:py-3 rounded-lg font-medium text-xs md:text-sm hover:bg-maroon-hover transition-colors shadow-lg touch-manipulation min-h-[44px]"
-                        >
-                            <Download size={16} />
-                            Download Asset
-                        </a>
+                    {/* Asset Download & Language Toggle */}
+                    <div className="flex flex-col items-center md:items-end gap-2 w-full md:w-auto">
+                        <div className="flex items-center gap-2 w-full md:w-auto">
+                            {/* Language Toggle */}
+                            <div className="flex bg-sand/20 rounded-lg p-1 border border-sand/30">
+                                <button
+                                    onClick={() => setLang('en')}
+                                    className={`px-4 py-2 rounded-md text-sm font-bold transition-all min-h-[36px] ${lang === 'en' ? 'bg-maroon text-white shadow-sm' : 'text-taupe hover:text-charcoal'}`}
+                                >
+                                    EN
+                                </button>
+                                <button
+                                    onClick={() => setLang('id')}
+                                    className={`px-4 py-2 rounded-md text-sm font-bold transition-all min-h-[36px] ${lang === 'id' ? 'bg-maroon text-white shadow-sm' : 'text-taupe hover:text-charcoal'}`}
+                                >
+                                    ID
+                                </button>
+                            </div>
+
+                            <a
+                                href="https://drive.google.com/file/d/1AaXeekBRExwG11kZvO1nipsI1-_V_ALg/view?usp=drive_link"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="flex-1 md:flex-none flex justify-center items-center gap-2 bg-maroon text-ivory px-4 py-2 md:px-6 md:py-2 rounded-lg font-medium text-xs md:text-sm hover:bg-maroon-hover transition-colors shadow-lg touch-manipulation min-h-[40px]"
+                            >
+                                <Download size={16} />
+                                {t('download_asset')}
+                            </a>
+                        </div>
                         <p className="text-[10px] text-taupe hidden md:block">
-                            Required for Souvenirs & Signage
+                            {t('download_desc')}
                         </p>
                     </div>
                 </div>
@@ -187,16 +209,16 @@ export default function VendorGuidelines() {
                 <section className="grid md:grid-cols-12 gap-8">
                     {/* Left: Concept Text */}
                     <div className="md:col-span-8 space-y-6">
-                        <SectionHeader icon={<Lightbulb className="text-terracotta" />} title="Design Concept" />
+                        <SectionHeader icon={<Lightbulb className="text-terracotta" />} title={t('concept_title')} />
                         <div className="glass-card p-6 md:p-8 rounded-xl">
                             <p className="text-lg md:text-xl leading-relaxed font-heading italic text-burgundy mb-4">
-                                "Maroon Romance Meets Ethereal Earth"
+                                {t('concept_quote')}
                             </p>
                             <p className="text-sm md:text-base leading-relaxed text-charcoal mb-6">
-                                We are creating a <strong>warm, romantic sanctuary</strong>. The design anchors on the couple's <strong>Deep Maroon</strong> attire, contrasted against a canvas of <strong>Warm Ivory, Champagne, and Earth Tones</strong>.
+                                {t('concept_desc_1')}<strong>{t('concept_desc_bold_1')}</strong>{t('concept_desc_2')}<strong>{t('concept_desc_bold_2')}</strong>{t('concept_desc_3')}<strong>{t('concept_desc_bold_3')}</strong>{t('concept_desc_4')}
                             </p>
                             <div className="flex gap-2 flex-wrap">
-                                {['Romantic', 'Warm', 'Organic', 'Timeless', 'Post-Lebaran Spring'].map(tag => (
+                                {t('tags').map(tag => (
                                     <span key={tag} className="px-3 py-1 rounded-full bg-sand/30 border border-sand text-burgundy text-xs uppercase tracking-wide font-medium">
                                         {tag}
                                     </span>
@@ -209,7 +231,7 @@ export default function VendorGuidelines() {
                     <div className="md:col-span-4">
                         <div className="bg-white rounded-xl border border-sand shadow-sm overflow-hidden h-full flex flex-col">
                             <div className="bg-ivory p-3 border-b border-sand flex justify-between items-center">
-                                <span className="text-xs text-burgundy font-bold uppercase tracking-widest">Official Asset</span>
+                                <span className="text-xs text-burgundy font-bold uppercase tracking-widest">{t('official_asset')}</span>
                                 <ExternalLink size={14} className="text-taupe" />
                             </div>
                             <div className="flex-grow flex items-center justify-center p-8 bg-white">
@@ -225,8 +247,8 @@ export default function VendorGuidelines() {
                             </div>
                             <div className="p-4 bg-ivory border-t border-sand text-center">
                                 <p className="text-[10px] text-taupe">
-                                    File: monogram-maroon-gold-full.png<br />
-                                    Usage: Embossed tags, Signage
+                                    {t('file_info')}<br />
+                                    {t('usage_info')}
                                 </p>
                             </div>
                         </div>
@@ -235,30 +257,30 @@ export default function VendorGuidelines() {
 
                 {/* 2. COLOR PALETTE (CRITICAL) */}
                 <section>
-                    <SectionHeader icon={<Palette className="text-terracotta" />} title="Official Color System" />
+                    <SectionHeader icon={<Palette className="text-terracotta" />} title={t('color_system_title')} />
 
                     <div className="mb-6 p-4 bg-maroon/5 rounded-lg border-l-4 border-maroon flex items-start gap-3">
                         <AlertCircle className="w-5 h-5 text-maroon shrink-0 mt-0.5" />
                         <div className="text-sm">
-                            <p className="font-bold text-maroon uppercase tracking-wide mb-1">Strict Color Rules</p>
+                            <p className="font-bold text-maroon uppercase tracking-wide mb-1">{t('strict_rules_title')}</p>
                             <ul className="list-disc ml-4 space-y-1 text-charcoal">
-                                <li><strong>Maroon (#800020)</strong> is strictly reserved for the Bride & Groom. Do not use for tablecloths, drapes, or guest attire.</li>
-                                <li><strong>Avoid Pure White.</strong> Always use Warm Ivory (#F8F6F0) or Champagne to maintain the "warm sanctuary" vibe.</li>
+                                <li><strong>Maroon (#800020)</strong>{t('rule_maroon')}</li>
+                                <li><strong>{t('rule_white')}</strong>{t('rule_white_desc')}</li>
                             </ul>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        <ColorCard color={COLORS.hero} large={true} />
-                        {COLORS.foundation.map((c, i) => <ColorCard key={i} color={c} />)}
-                        {COLORS.accents.map((c, i) => <ColorCard key={i} color={c} />)}
-                        {COLORS.text.map((c, i) => <ColorCard key={i} color={c} />)}
+                        <ColorCard color={COLORS.hero} large={true} t={t} />
+                        {COLORS.foundation.map((c, i) => <ColorCard key={i} color={c} t={t} />)}
+                        {COLORS.accents.map((c, i) => <ColorCard key={i} color={c} t={t} />)}
+                        {COLORS.text.map((c, i) => <ColorCard key={i} color={c} t={t} />)}
                     </div>
                 </section>
 
                 {/* 3. PRODUCTION BRIEFS */}
                 <section>
-                    <SectionHeader icon={<Check className="text-terracotta" />} title="Production Briefs" />
+                    <SectionHeader icon={<Check className="text-terracotta" />} title={t('production_briefs_title')} />
                     <div className="grid md:grid-cols-3 gap-6">
                         {VENDOR_BRIEFS.map((brief, idx) => (
                             <div key={idx} className="glass-card p-8 rounded-xl flex flex-col h-full hover:border-terracotta transition-colors">
@@ -267,12 +289,12 @@ export default function VendorGuidelines() {
                                     <h3 className="font-heading font-bold text-xl text-burgundy">{brief.role}</h3>
                                 </div>
                                 <div className="mb-6">
-                                    <h4 className="text-xs font-bold text-maroon uppercase tracking-widest mb-2">Theme</h4>
+                                    <h4 className="text-xs font-bold text-maroon uppercase tracking-widest mb-2">{t('theme_label')}</h4>
                                     <p className="text-sm font-medium text-charcoal">{brief.title}</p>
                                     <p className="text-xs text-taupe mt-1 italic">{brief.desc}</p>
                                 </div>
                                 <div className="mt-auto">
-                                    <h4 className="text-xs font-bold text-charcoal uppercase tracking-widest mb-3">Requirements</h4>
+                                    <h4 className="text-xs font-bold text-charcoal uppercase tracking-widest mb-3">{t('req_label')}</h4>
                                     <ul className="space-y-3">
                                         {brief.points.map((pt, i) => (
                                             <li key={i} className="text-xs flex items-start gap-2 leading-relaxed">
@@ -289,37 +311,37 @@ export default function VendorGuidelines() {
 
                 {/* 4. TYPOGRAPHY & APPLICATION */}
                 <section>
-                    <SectionHeader icon={<Type className="text-terracotta" />} title="Typography & Souvenir Details" />
+                    <SectionHeader icon={<Type className="text-terracotta" />} title={t('typography_title')} />
                     <div className="grid md:grid-cols-2 gap-8">
                         {/* Fonts */}
                         <div className="space-y-8 bg-white p-8 rounded-xl border border-sand">
                             <div className="border-l-4 border-burgundy pl-6">
-                                <span className="text-[10px] text-taupe uppercase tracking-widest font-bold">Main Headings</span>
+                                <span className="text-[10px] text-taupe uppercase tracking-widest font-bold">{t('main_headings')}</span>
                                 <p className="font-heading text-4xl text-charcoal mt-1">Playfair Display</p>
-                                <p className="text-xs text-taupe mt-1">Use for "The Wedding of", Welcome Signs</p>
+                                <p className="text-xs text-taupe mt-1">{t('use_headings')}</p>
                             </div>
                             <div className="border-l-4 border-charcoal pl-6">
-                                <span className="text-[10px] text-taupe uppercase tracking-widest font-bold">Body & Menus</span>
+                                <span className="text-[10px] text-taupe uppercase tracking-widest font-bold">{t('body_menus')}</span>
                                 <p className="font-body text-4xl text-charcoal mt-1">Montserrat</p>
-                                <p className="text-xs text-taupe mt-1">Use for Menu lists, Souvenir cards</p>
+                                <p className="text-xs text-taupe mt-1">{t('use_body')}</p>
                             </div>
                             <div className="border-l-4 border-maroon pl-6">
-                                <span className="text-[10px] text-taupe uppercase tracking-widest font-bold">Couple Signatures</span>
+                                <span className="text-[10px] text-taupe uppercase tracking-widest font-bold">{t('couple_signatures')}</span>
                                 <p className="font-script text-5xl text-maroon mt-1">Pinyon Script</p>
-                                <p className="text-xs text-taupe mt-1">Use for "Athur & Dara" only</p>
+                                <p className="text-xs text-taupe mt-1">{t('use_script')}</p>
                             </div>
                         </div>
 
                         {/* Application Guidelines */}
                         <div className="glass-card p-8 rounded-xl">
-                            <h3 className="font-heading font-bold text-burgundy text-xl mb-6">Souvenir & Tag Rules</h3>
+                            <h3 className="font-heading font-bold text-burgundy text-xl mb-6">{t('souvenir_rules_title')}</h3>
                             <div className="space-y-3">
-                                <DoDontRow type="do" text="Use Warm Taupe ink on Ivory paper" />
-                                <DoDontRow type="do" text="Embossed (Timbul) is preferred for luxury feel" />
-                                <DoDontRow type="do" text="Maintain clear space around the arch logo" />
-                                <DoDontRow type="dont" text="Do NOT use glossy or shiny gold finishes" />
-                                <DoDontRow type="dont" text="Do NOT distort the Monogram aspect ratio" />
-                                <DoDontRow type="dont" text="Do NOT use black ink (too harsh)" />
+                                <DoDontRow type="do" text={t('rule_do_1')} />
+                                <DoDontRow type="do" text={t('rule_do_2')} />
+                                <DoDontRow type="do" text={t('rule_do_3')} />
+                                <DoDontRow type="dont" text={t('rule_dont_1')} />
+                                <DoDontRow type="dont" text={t('rule_dont_2')} />
+                                <DoDontRow type="dont" text={t('rule_dont_3')} />
                             </div>
                         </div>
                     </div>
@@ -328,10 +350,9 @@ export default function VendorGuidelines() {
                 {/* FOOTER */}
                 <footer className="border-t border-[#E8DCC4] py-12 text-center">
                     <p className="font-heading text-burgundy text-lg font-bold">Athur & Dara</p>
-                    <p className="text-xs text-taupe mt-2 uppercase tracking-widest">Official Design Guidelines • Steikhaus 2026</p>
-                    <p className="text-[10px] text-taupe mt-4 max-w-md mx-auto leading-relaxed opacity-60">
-                        This document is intended for vendor reference only. Colors may vary on screens.
-                        Please refer to Pantone/Hex codes for exact matching.
+                    <p className="text-xs text-taupe mt-2 uppercase tracking-widest">{t('footer_rights')}</p>
+                    <p className="text-xs text-taupe mt-4 max-w-md mx-auto leading-relaxed opacity-60">
+                        {t('footer_disclaimer')}
                     </p>
                 </footer>
 
