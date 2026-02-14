@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cover = document.getElementById('cover');
     const mainContent = document.getElementById('main-content');
 
-    // Initialize Language (Default EN) which also renders story and time
+    // Initialize Language (Default ID) which also renders story and time
     updateLanguage('id');
 
 
@@ -229,10 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Defaults: Adults 1-8, Children 0-4
+    // Defaults: Adults 1-2, Children 0-0
     // If param exists, it overrides strict range
-    populateDropdown(adultSelect, 8, 'adult', false);
-    populateDropdown(childSelect, 4, 'children', true);
+    populateDropdown(adultSelect, 2, 'adult', false);
+    populateDropdown(childSelect, 0, 'children', true);
 
 
     rsvpForm.addEventListener('submit', async (e) => {
