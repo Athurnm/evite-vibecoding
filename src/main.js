@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (akadTimeElement) {
             if (eventType === 'akad') {
-                akadTimeElement.textContent = t ? t.akad_time_default : "07:00 - 09:30 WIB";
+                akadTimeElement.textContent = t ? t.akad_time_default : "06:30 - 09:30 WIB";
             } else {
                 akadTimeElement.textContent = t ? t.akad_time_resepsi : "Done in the morning";
             }
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (akadTimeElement) {
         if (eventType === 'akad') {
-            akadTimeElement.textContent = "07:00 - 09:30 WIB";
+            akadTimeElement.textContent = "06:30 - 09:30 WIB";
         } else {
             // Resepsi (Default)
             akadTimeElement.textContent = "Done in the morning";
@@ -175,19 +175,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendarBtn = document.getElementById('add-to-calendar');
     calendarBtn.addEventListener('click', () => {
         // 11:00 WIB = 04:00 UTC (Resepsi)
-        // 07:00 WIB = 00:00 UTC (Akad)
+        // 06:30 WIB = 23:30 UTC of previous day (Akad)
         // 13:00 WIB = 06:00 UTC (End)
 
         const params = new URLSearchParams(window.location.search);
         const eventType = params.get('type');
 
+        let dateStart = '20260328';
         let timeStart = '040000Z'; // Default 11:00 WIB
         if (eventType === 'akad') {
-            timeStart = '000000Z'; // 07:00 WIB
+            dateStart = '20260327';
+            timeStart = '233000Z'; // 06:30 WIB
         }
 
         const timeEnd = '060000Z'; // Always 13:00 WIB
-        const eventDate = `20260328T${timeStart}/20260328T${timeEnd}`;
+        const eventDate = `${dateStart}T${timeStart}/20260328T${timeEnd}`;
 
         const title = encodeURIComponent("The Wedding of Athur & Dara");
         const details = encodeURIComponent("Join us in celebrating our wedding!");
