@@ -1,4 +1,4 @@
-import { getDoc } from './_lib/google.js';
+import { getDoc, syncRsvpToSheet } from './_lib/google.js';
 import getPool from './_lib/db.js';
 
 export default async function handler(req, res) {
@@ -157,6 +157,12 @@ export default async function handler(req, res) {
                     updated_at = NOW();
             `;
             await pool.query(query, [sender, item]);
+
+            // Await the sync to Google Sheets (Vercel kills unawaited promises)
+            await syncRsvpToSheet({
+                name: sender,
+                gift_item_name: item
+            });
 
             return res.status(200).json({ success: true });
         }

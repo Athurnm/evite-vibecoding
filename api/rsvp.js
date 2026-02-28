@@ -1,5 +1,6 @@
 import getPool from './_lib/db.js';
 import { createObjectCsvStringifier } from 'csv-writer';
+import { syncRsvpToSheet } from './_lib/google.js';
 
 export default async function handler(request, response) {
     let pool;
@@ -35,6 +36,17 @@ export default async function handler(request, response) {
 
             // Optional: Also insert into historical 'rsvp' table if you want to keep a log of every click
             // But for now, let's focus on the new requirement.
+
+            // Await the sync to Google Sheets 
+            // Vercel serverless functions will terminate background promises if not awaited
+            await syncRsvpToSheet({
+                name,
+                guests,
+                adults,
+                children,
+                attendance,
+                wishes
+            });
 
             return response.status(200).json({ message: 'RSVP submitted successfully' });
         } catch (error) {
